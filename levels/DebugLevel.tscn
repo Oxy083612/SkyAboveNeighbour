@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c1rn0eqycnqei"]
+
+[ext_resource type="PackedScene" uid="uid://cher18deqtnp7" path="res://rooms/room1.tscn" id="1_gs5g8"]
+[ext_resource type="PackedScene" uid="uid://cyfg3dnexb7tu" path="res://player/PlayerCharacter.tscn" id="2_b2lhc"]
+[ext_resource type="Script" uid="uid://bqvsf20l0syju" path="res://player/player_character.gd" id="2_objww"]
+
+[node name="Node2D" type="Node2D" unique_id=2145504740]
+
+[node name="PlayerCharacter" parent="." unique_id=2119374531 instance=ExtResource("2_b2lhc")]
+position = Vector2(1099, 481)
+script = ExtResource("2_objww")
+
+[node name="MoveShape" parent="." unique_id=1421512101 instance=ExtResource("1_gs5g8")]
+position = Vector2(346, 310)
