@@ -1,17 +1,26 @@
 [gd_scene format=3 uid="uid://cher18deqtnp7"]
 
 [ext_resource type="Script" uid="uid://duulptbebx0n" path="res://assets/room.gd" id="1_0tg7r"]
+[ext_resource type="Texture2D" uid="uid://udyfa46x6gwb" path="res://room_sprites/FullRender2.png" id="2_n2rm1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yv82f"]
+atlas = ExtResource("2_n2rm1")
+region = Rect2(985.24243, 103.47273, 926.51294, 453.8849)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tg7r"]
-size = Vector2(500, 200)
+size = Vector2(783, 200)
 
-[node name="MoveShape" type="Node2D" unique_id=1421512101]
+[node name="room1" type="Node2D" unique_id=1421512101]
 script = ExtResource("1_0tg7r")
 
+[node name="FullRender2" type="Sprite2D" parent="." unique_id=204317490]
+position = Vector2(463, 226)
+texture = SubResource("AtlasTexture_yv82f")
+
 [node name="Area2D" type="Area2D" parent="." unique_id=621461633]
+position = Vector2(471, 327)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=844108153]
-position = Vector2(252, 99)
 shape = SubResource("RectangleShape2D_0tg7r")
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
