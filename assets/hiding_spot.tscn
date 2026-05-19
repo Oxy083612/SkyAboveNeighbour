@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bqlb7suq0qa35"]
+
+[ext_resource type="Script" uid="uid://c6nj6jjvchrfy" path="res://assets/hiding_spot.gd" id="1_x0lg5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6fyd"]
+size = Vector2(100, 100)
+
+[node name="HidingSpot" type="Node2D" unique_id=66915524]
+script = ExtResource("1_x0lg5")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=359551211]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1542622485]
+shape = SubResource("RectangleShape2D_c6fyd")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
