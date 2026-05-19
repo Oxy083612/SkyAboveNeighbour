@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://bx12x10cnmqgw"]
+
+[ext_resource type="Texture2D" uid="uid://8twljayq0k4h" path="res://assets/tempitemsprite.png" id="1_dcagp"]
+[ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scripts/Item.gd" id="1_kr6k7"]
+
+[resource]
+script = ExtResource("1_kr6k7")
+itemName = "sword"
+itemTexture = ExtResource("1_dcagp")
+metadata/_custom_type_script = "uid://b3mkx1lc4aoff"
