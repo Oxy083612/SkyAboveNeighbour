@@ -1,5 +1,6 @@
 class_name PlayerCharacter
 extends Node2D
+@onready var inventory: Inventory = %Control
 
 enum State {
 	IDLE,
@@ -28,6 +29,7 @@ var _pending_action := Action.NONE
 func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
 	SignalBus.hiding_action.connect(_on_hide)
+	SignalBus.pickup_action.connect(_on_pickup)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,7 +49,9 @@ func _on_hide(x, y, spot_y) -> void:
 	_interaction_y = spot_y
 	_pending_action = Action.HIDE
 	set_state(State.WALK)
-
+func _on_pickup(name) -> void:
+	inventory.addItem(name)
+	
 func set_state(state) -> void:
 	exit_state()
 	CurrentState = state

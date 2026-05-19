@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://myilt12pfdmo"]
+
+[ext_resource type="Script" uid="uid://c38krrm8clq7a" path="res://scripts/item_pickup.gd" id="1_p36xk"]
+[ext_resource type="Texture2D" uid="uid://8twljayq0k4h" path="res://assets/tempitemsprite.png" id="2_ixpej"]
+[ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scripts/Item.gd" id="3_waend"]
+
+[sub_resource type="Resource" id="Resource_xqiji"]
+script = ExtResource("3_waend")
+itemName = "sword"
+itemTexture = ExtResource("2_ixpej")
+metadata/_custom_type_script = "uid://b3mkx1lc4aoff"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfos4"]
+size = Vector2(37.5, 42)
+
+[node name="Area2D" type="Area2D" unique_id=164163124]
+script = ExtResource("1_p36xk")
+item = SubResource("Resource_xqiji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1147025264]
+position = Vector2(469.25, 289)
+shape = SubResource("RectangleShape2D_cfos4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1010259196]
+position = Vector2(468.99997, 291)
+scale = Vector2(0.077148445, 0.08398436)
+texture = ExtResource("2_ixpej")

@@ -5,8 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cyfg3dnexb7tu" path="res://player/PlayerCharacter.tscn" id="2_b2lhc"]
 [ext_resource type="Script" uid="uid://bqvsf20l0syju" path="res://player/player_character.gd" id="2_objww"]
 [ext_resource type="PackedScene" uid="uid://bqlb7suq0qa35" path="res://assets/hiding_spot.tscn" id="5_618h7"]
-[ext_resource type="PackedScene" uid="uid://cyfcixu53v5b5" path="res://scenes/inventory.tscn" id="6_exmg7"]
-[ext_resource type="PackedScene" uid="uid://myilt12pfdmo" path="res://scenes/item_container.tscn" id="7_exmg7"]
+[ext_resource type="Script" uid="uid://cskbvymjdbu66" path="res://scripts/inventory.gd" id="6_54tx4"]
 
 [node name="Node2D" type="Node2D" unique_id=2145504740]
 script = ExtResource("1_objww")
@@ -22,7 +21,12 @@ speed = 250.0
 [node name="HidingSpot" parent="." unique_id=66915524 instance=ExtResource("5_618h7")]
 position = Vector2(316, 283)
 
-[node name="Control" parent="." unique_id=1029236956 instance=ExtResource("6_exmg7")]
+[node name="Control" type="Control" parent="." unique_id=1631779168]
 unique_name_in_owner = true
-
-[node name="Area2D" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 316.0
+offset_top = 283.0
+offset_right = 356.0
+offset_bottom = 323.0
+script = ExtResource("6_54tx4")
