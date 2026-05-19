@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cher18deqtnp7"]
+
+[ext_resource type="Script" uid="uid://duulptbebx0n" path="res://assets/room.gd" id="1_0tg7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tg7r"]
+size = Vector2(500, 200)
+
+[node name="MoveShape" type="Node2D" unique_id=1421512101]
+script = ExtResource("1_0tg7r")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=621461633]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=844108153]
+position = Vector2(252, 99)
+shape = SubResource("RectangleShape2D_0tg7r")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

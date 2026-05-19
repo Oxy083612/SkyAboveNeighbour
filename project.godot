@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Sky Above Neighbour"
+run/main_scene="uid://c1rn0eqycnqei"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MovementBus="*uid://fqd884l32jk6"
 
 [physics]
 
