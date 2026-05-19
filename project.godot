@@ -15,9 +15,6 @@ run/main_scene="uid://c1rn0eqycnqei"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[global_group]
-
-path_manager=""
 [autoload]
 
 SignalBus="*uid://fqd884l32jk6"
@@ -26,6 +23,10 @@ SignalBus="*uid://fqd884l32jk6"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+
+[global_group]
+
+path_manager=""
 
 [physics]
 
