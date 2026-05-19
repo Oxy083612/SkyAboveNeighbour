@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://fqd884l32jk6"]
 
-[ext_resource type="Script" uid="uid://dqy2e8dhsyhgv" path="res://assets/movement_bus.gd" id="1_elrcr"]
+[ext_resource type="Script" uid="uid://dqy2e8dhsyhgv" path="res://assets/signal_bus.gd" id="1_elrcr"]
 
 [node name="MovementBus" type="Node" unique_id=1455538136]
 script = ExtResource("1_elrcr")
