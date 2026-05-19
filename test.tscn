@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://c1yc4r7qbtgqk"]
+
+[ext_resource type="PackedScene" uid="uid://dvb0cb0rbo5mf" path="res://enemy.tscn" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://bq2hx8vvhjhlc" path="res://door.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://cbo5of5bdy4dd" path="res://scripts/path_manager.tscn" id="2_ppyta"]
+[ext_resource type="PackedScene" uid="uid://d23r4tdd6e6yp" path="res://scripts/floor.tscn" id="3_6uqi0"]
+
+[node name="test" type="Node2D" unique_id=1107799388]
+
+[node name="Enemy" parent="." unique_id=1191606021 instance=ExtResource("1_37kl0")]
+position = Vector2(214, 495)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1389535714 groups=["FirstEnemy"]]
+position = Vector2(992, 570)
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=933306137 groups=["FirstEnemy"]]
+position = Vector2(1022, 136)
+
+[node name="Marker2D3" type="Marker2D" parent="." unique_id=682554085 groups=["FirstEnemy"]]
+position = Vector2(99, 243)
+
+[node name="Door" parent="." unique_id=1293053166 groups=["doors"] instance=ExtResource("2_8uh7m")]
+position = Vector2(870, 504)
+destination_floor = 1
+
+[node name="DestinationPoint" parent="Door" index="2" unique_id=1317049880]
+position = Vector2(-3, -177)
+
+[node name="Door2" parent="." unique_id=1371206811 groups=["doors"] instance=ExtResource("2_8uh7m")]
+position = Vector2(200.74, 335.36)
+current_floor = 1
+destination_floor = 2
+
+[node name="DestinationPoint" parent="Door2" index="2" unique_id=1317049880]
+position = Vector2(-3, -177)
+
+[node name="floor" parent="." unique_id=2049969639 instance=ExtResource("3_6uqi0")]
+
+[node name="Path_manager" parent="." unique_id=460181009 groups=["path_manager"] instance=ExtResource("2_ppyta")]
+
+[editable path="Door"]
+[editable path="Door2"]

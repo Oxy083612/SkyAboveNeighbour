@@ -14,6 +14,10 @@ config/name="Sky Above Neighbour"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[global_group]
+
+path_manager=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
