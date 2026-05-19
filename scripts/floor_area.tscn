@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cxnc44udt5tft"]
+
+[ext_resource type="Script" uid="uid://dt6hmtx48hklg" path="res://area_2d.gd" id="1_b6ssk"]
+
+[node name="floor_area" type="Area2D" unique_id=313706352]
+script = ExtResource("1_b6ssk")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

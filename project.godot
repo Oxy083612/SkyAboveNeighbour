@@ -24,6 +24,10 @@ SignalBus="*uid://fqd884l32jk6"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[global_group]
+
+path_manager=""
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
