@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cyfcixu53v5b5"]
+
+[ext_resource type="Script" uid="uid://cskbvymjdbu66" path="res://scripts/inventory.gd" id="1_qw0r6"]
+
+[node name="Control" type="Control" unique_id=1029236956]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 316.0
+offset_top = 283.0
+offset_right = 356.0
+offset_bottom = 323.0
+script = ExtResource("1_qw0r6")
