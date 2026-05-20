@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b5uuree17mn0y"]
+
+[node name="CenterContainer" type="CenterContainer" unique_id=2063808592]
+offset_right = 40.0
+offset_bottom = 40.0

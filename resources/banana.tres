@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dgpin2jktogu1"]
+
+[ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scenes/player/Item.gd" id="1_21uq3"]
+
+[resource]
+script = ExtResource("1_21uq3")
+itemName = "banana"
+metadata/_custom_type_script = "uid://b3mkx1lc4aoff"

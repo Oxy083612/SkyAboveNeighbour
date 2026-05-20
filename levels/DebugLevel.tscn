@@ -4,13 +4,14 @@
 [ext_resource type="Script" uid="uid://dur26oe16hpu5" path="res://levels/debug_level.gd" id="1_objww"]
 [ext_resource type="PackedScene" uid="uid://cyfg3dnexb7tu" path="res://scenes/player/PlayerCharacter.tscn" id="2_b2lhc"]
 [ext_resource type="PackedScene" uid="uid://bqlb7suq0qa35" path="res://scenes/placeables/placeable_hiding_spot.tscn" id="5_618h7"]
-[ext_resource type="PackedScene" uid="uid://cyfcixu53v5b5" path="res://scenes/UI/inventory.tscn" id="6_exmg7"]
 [ext_resource type="PackedScene" uid="uid://myilt12pfdmo" path="res://scenes/placeables/placeable_item_container.tscn" id="7_exmg7"]
 [ext_resource type="Resource" uid="uid://bx12x10cnmqgw" path="res://resources/sword.tres" id="8_cfos4"]
 [ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scenes/player/Item.gd" id="8_hyqnr"]
 [ext_resource type="Texture2D" uid="uid://8twljayq0k4h" path="res://assets/placeholders/tempitemsprite.png" id="9_f3y16"]
 [ext_resource type="PackedScene" uid="uid://oyfyx44rrcsn" path="res://scenes/placeables/placeable_prank.tscn" id="11_fht7i"]
+[ext_resource type="Resource" uid="uid://dgpin2jktogu1" path="res://resources/banana.tres" id="12_cfos4"]
 [ext_resource type="Resource" uid="uid://5lgt7fffpi1a" path="res://resources/blender.tres" id="12_pffqa"]
+[ext_resource type="Texture2D" uid="uid://vx2amim3loum" path="res://assets/placeholders/banana.png" id="13_f3y16"]
 [ext_resource type="Texture2D" uid="uid://dwbt1xv2qfd2e" path="res://assets/placeholders/blen.png" id="13_ymomd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkkvq"]
@@ -28,9 +29,6 @@ speed = 250.0
 
 [node name="HidingSpot" parent="." unique_id=66915524 instance=ExtResource("5_618h7")]
 position = Vector2(329, 338)
-
-[node name="Control" parent="." unique_id=1029236956 instance=ExtResource("6_exmg7")]
-unique_name_in_owner = true
 
 [node name="ItemContainer" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
 position = Vector2(535, 353)
@@ -57,5 +55,15 @@ texture = ExtResource("13_ymomd")
 position = Vector2(2, -2)
 shape = SubResource("CircleShape2D_qkkvq")
 
+[node name="ItemContainer2" parent="." unique_id=1321005062 instance=ExtResource("7_exmg7")]
+position = Vector2(421, 346)
+items = Array[ExtResource("8_hyqnr")]([ExtResource("12_cfos4")])
+
+[node name="Sprite2D" parent="ItemContainer2" index="0" unique_id=1010259196]
+position = Vector2(-2, -3.000002)
+scale = Vector2(0.025776377, 0.033012185)
+texture = ExtResource("13_f3y16")
+
 [editable path="ItemContainer"]
 [editable path="Area2D"]
+[editable path="ItemContainer2"]

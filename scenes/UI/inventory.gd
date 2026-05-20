@@ -1,27 +1,24 @@
 extends Control
 class_name Inventory
 var pickedUpItems = []
-
-func addItem(name):
-	pickedUpItems.append(name)
-	print(name)
-	
+@onready var inventory_ui: InventoryUi = $Hud/HBoxContainer2
+func addItem(item):
+	pickedUpItems.append(item)
+	inventory_ui.addIcon(item)
 func checkItem(name):
-	print(name)
 	for index in range(pickedUpItems.size()):
-		print(pickedUpItems[index].itemName+"a")
 		if pickedUpItems[index].itemName == name:
 			return true
 	return false
-func getIndex(name):
+func getIndex(item):
 	for index in range(pickedUpItems.size()):
 		if pickedUpItems[index].itemName == name:
 			return index
 	return -1
 	
-func removeItem(name):
-	pickedUpItems.remove_at(getIndex(name))
-
+func removeItem(item):
+	pickedUpItems.remove_at(getIndex(item))
+	inventory_ui.removeIcon(item)
 func _ready() -> void:
 	pass
 
