@@ -30,6 +30,7 @@ func _ready():
 
 func _physics_process(delta):
 	if doeswander:
+		#print("ideeeee")
 		go_to_interest_point()
 		
 	update_path()
@@ -40,7 +41,7 @@ func _physics_process(delta):
 		direction = sign(door_target_position - global_position.x)
 	else:
 		direction = sign(current_target_position.x - global_position.x)
-	velocity.x = direction * 100
+	velocity.x = direction * 300
 	velocity.y = 0;
 	move_and_slide()
 		
@@ -53,18 +54,24 @@ func update_path():
 		return
 		
 	if doorfound == false:
-		if target_floor:
+		#print(target_floor)
+		
+		if target_floor != -10:
+			#print(target_floor)
+			#print("     ")
+			#print(current_floor)
 			if target_floor > current_floor:
 				floortogo = current_floor + 1
-				print("uuuuuuuuu")
-			else:
+				#print("uuuuuuuuu")
+				
+			if target_floor < current_floor:
 				floortogo = current_floor - 1
-				print("dddddddddddddd")
+				#print("dddddddddddddd")
 		
-
-		doorfound = true;
 		find_door()
-	
+		doorfound = true;
+		
+		
 		for x : Door in doors:
 			if x.global_position < global_position && x.global_position > global_position || x.global_position > global_position && x.global_position < global_position:
 				door_target_position = x.global_position.x
@@ -74,19 +81,19 @@ func update_path():
 				door_target_position = x.global_position.x
 				door = x;
 			
-	else:
+	elif doorfound == true:
 		if floortogo == current_floor:
 			doorfound = false;
-	print(door)
+			print(doorfound)
 
 
 
 
 
 func find_door():
-	print(current_floor)
-	print("     ")
-	print(floortogo)
+	#print(current_floor)
+	#print("     ")
+	#print(floortogo)
 	doors = path_manager.give_doors(current_floor, floortogo)
 	#print(doors)
 
@@ -102,8 +109,8 @@ func change_floor(i, j, k):
 		position = j
 		door_target_position = -1
 		doorfound = false;
-	 
-	
+ 
+
 func get_interest_points():
 	for node in get_tree().get_nodes_in_group("FirstEnemy"):
 		var interest_point = node as Interest_point
@@ -111,8 +118,8 @@ func get_interest_points():
 		if interest_point:
 			interest_points.append(interest_point)
 			
-	
-	
+
+
 func go_to_interest_point():
 	#interest_points.shuffle()
 	#print(looper_interest)
