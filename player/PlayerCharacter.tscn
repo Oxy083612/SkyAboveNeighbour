@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://u78cujvjrvna" path="res://icon.svg" id="1_8ocfk"]
 [ext_resource type="Script" uid="uid://bqvsf20l0syju" path="res://player/player_character.gd" id="1_chqax"]
+[ext_resource type="PackedScene" uid="uid://b05sxwgncuqqu" path="res://UI/HUD.tscn" id="3_ur54r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chqax"]
 atlas = ExtResource("1_8ocfk")
@@ -145,9 +146,13 @@ animation = &"moving-left"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1373251789]
 
+[node name="Hud" parent="Camera2D" unique_id=992104850 instance=ExtResource("3_ur54r")]
+
 [node name="Area2D" type="Area2D" parent="." unique_id=941971318]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1404834666]
 shape = SubResource("CircleShape2D_8ocfk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+
+[editable path="Camera2D/Hud"]

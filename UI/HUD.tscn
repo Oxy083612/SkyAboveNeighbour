@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://b05sxwgncuqqu"]
 
-[ext_resource type="PackedScene" uid="uid://ls7pkhr1b2k1" path="res://UI/medal_container.tscn" id="1_yixhe"]
-
 [node name="Hud" type="CanvasLayer" unique_id=992104850]
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1881481924]
@@ -10,7 +8,5 @@ anchor_right = 1.0
 anchor_bottom = 0.132
 offset_bottom = 0.44000244
 grow_horizontal = 0
+theme_override_constants/separation = 40
 alignment = 1
-
-[node name="MedalContainer" parent="HBoxContainer" unique_id=1831873401 instance=ExtResource("1_yixhe")]
-layout_mode = 2
