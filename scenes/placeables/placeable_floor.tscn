@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d23r4tdd6e6yp"]
+
+[ext_resource type="Script" uid="uid://depwfapdbbivd" path="res://scenes/placeables/floor.gd" id="1_ij88a"]
+
+[node name="floor" type="Node2D" unique_id=2049969639]
+script = ExtResource("1_ij88a")

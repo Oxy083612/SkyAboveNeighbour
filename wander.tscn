@@ -1,7 +1,0 @@
-[gd_scene format=3 uid="uid://51hjjrhyxs01"]
-
-[ext_resource type="Script" uid="uid://ck8lsbixx6sx5" path="res://wander.gd" id="1_g1y5l"]
-
-[node name="Wander" type="Node2D" unique_id=1449602281]
-script = ExtResource("1_g1y5l")
-group_name = null
