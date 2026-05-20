@@ -6,16 +6,16 @@
 [ext_resource type="PackedScene" uid="uid://bqlb7suq0qa35" path="res://assets/hiding_spot.tscn" id="5_618h7"]
 [ext_resource type="PackedScene" uid="uid://cyfcixu53v5b5" path="res://scenes/inventory.tscn" id="6_exmg7"]
 [ext_resource type="PackedScene" uid="uid://myilt12pfdmo" path="res://scenes/item_container.tscn" id="7_exmg7"]
+[ext_resource type="Resource" uid="uid://bx12x10cnmqgw" path="res://resources/sword.tres" id="8_cfos4"]
 [ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scripts/Item.gd" id="8_hyqnr"]
 [ext_resource type="PackedScene" uid="uid://bq2hx8vvhjhlc" path="res://door.tscn" id="8_s0miu"]
+[ext_resource type="Texture2D" uid="uid://8twljayq0k4h" path="res://assets/tempitemsprite.png" id="9_f3y16"]
+[ext_resource type="PackedScene" uid="uid://oyfyx44rrcsn" path="res://scenes/prankTemplate.tscn" id="11_fht7i"]
+[ext_resource type="Resource" uid="uid://5lgt7fffpi1a" path="res://resources/blender.tres" id="12_pffqa"]
+[ext_resource type="Texture2D" uid="uid://dwbt1xv2qfd2e" path="res://assets/blen.png" id="13_ymomd"]
 
-[sub_resource type="Resource" id="Resource_1fhno"]
-script = ExtResource("8_hyqnr")
-metadata/_custom_type_script = "uid://b3mkx1lc4aoff"
-
-[sub_resource type="Resource" id="Resource_6o08p"]
-script = ExtResource("8_hyqnr")
-metadata/_custom_type_script = "uid://b3mkx1lc4aoff"
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkkvq"]
+radius = 12.84
 
 [node name="Node2D" type="Node2D" unique_id=2145504740]
 script = ExtResource("1_objww")
@@ -34,8 +34,16 @@ position = Vector2(316, 283)
 unique_name_in_owner = true
 
 [node name="ItemContainer" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
-position = Vector2(745, 287)
-items = Array[ExtResource("8_hyqnr")]([SubResource("Resource_1fhno"), SubResource("Resource_6o08p")])
+position = Vector2(583, 291)
+items = Array[ExtResource("8_hyqnr")]([ExtResource("8_cfos4")])
+
+[node name="Sprite2D" parent="ItemContainer" index="0" unique_id=1010259196]
+position = Vector2(2.7500024, -4.749997)
+scale = Vector2(0.059570305, 0.05566405)
+texture = ExtResource("9_f3y16")
+
+[node name="CollisionShape2D" parent="ItemContainer" index="1" unique_id=1147025264]
+position = Vector2(1, -3)
 
 [node name="Door" parent="." unique_id=1293053166 instance=ExtResource("8_s0miu")]
 position = Vector2(526, 456)
@@ -43,4 +51,19 @@ position = Vector2(526, 456)
 [node name="DestinationPoint" parent="Door" index="2" unique_id=1317049880]
 position = Vector2(3, -469)
 
+[node name="Area2D" parent="." unique_id=747317249 instance=ExtResource("11_fht7i")]
+position = Vector2(689, 322)
+prank = ExtResource("12_pffqa")
+
+[node name="Sprite2D" parent="Area2D" index="0" unique_id=1019381928]
+position = Vector2(2.3134866, -0.9794872)
+scale = Vector2(0.040160254, 0.037074994)
+texture = ExtResource("13_ymomd")
+
+[node name="CollisionShape2D" parent="Area2D" index="1" unique_id=1534811770]
+position = Vector2(2, -2)
+shape = SubResource("CircleShape2D_qkkvq")
+
+[editable path="ItemContainer"]
 [editable path="Door"]
+[editable path="Area2D"]
