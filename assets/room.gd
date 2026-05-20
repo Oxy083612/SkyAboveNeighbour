@@ -24,3 +24,17 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 	
 	input_flag = false
 	
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.owner is PlayerCharacter:
+		var player = area.owner as PlayerCharacter
+		player.current_room = self
+		
+		
+		
+		
+		
+		
+		
+		
