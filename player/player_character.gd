@@ -137,6 +137,7 @@ func state_handler() -> void:
 				for item in item_container.items:
 					inventory.addItem(item)
 				item_container.is_empty = true
+				item_container.queue_free() 
 			item_container = null
 			set_state(State.IDLE)
 
