@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="Prank" format=3 uid="uid://5lgt7fffpi1a"]
 
 [ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scripts/Item.gd" id="1_chnue"]
+[ext_resource type="Resource" uid="uid://bx12x10cnmqgw" path="res://resources/sword.tres" id="2_kils5"]
 [ext_resource type="Script" uid="uid://yt4x3dje3uga" path="res://scripts/Prank.gd" id="2_oscfb"]
 
 [resource]
 script = ExtResource("2_oscfb")
 prankName = "blender"
+prankRequiredItems = Array[ExtResource("1_chnue")]([ExtResource("2_kils5")])
 metadata/_custom_type_script = "uid://yt4x3dje3uga"
