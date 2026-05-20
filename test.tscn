@@ -17,7 +17,7 @@ destination_floor = 1
 position = Vector2(-3, -177)
 
 [node name="Door2" parent="." unique_id=1371206811 groups=["doors"] instance=ExtResource("2_8uh7m")]
-position = Vector2(200.74, 335.36)
+position = Vector2(493, 328)
 current_floor = 1
 destination_floor = 2
 
@@ -41,7 +41,7 @@ current_floor = 2
 destination_floor = 1
 
 [node name="DestinationPoint" parent="Door4" index="2" unique_id=1317049880]
-position = Vector2(9, 178)
+position = Vector2(18, 179)
 
 [node name="Door5" parent="." unique_id=1967522427 groups=["doors"] instance=ExtResource("2_8uh7m")]
 position = Vector2(733, 341)
