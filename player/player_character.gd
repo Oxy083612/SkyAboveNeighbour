@@ -16,7 +16,7 @@ enum Action {
 	MOVE,
 	HIDE,
 	PICKUP,
-	
+	PRANK
 }
 
 @export var speed := 200.0
@@ -28,13 +28,14 @@ var _interaction_y := 0
 var _pending_action := Action.NONE
 var item_container
 var current_room: Room = null
-
+var current_prank: Prank = null
 
 func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
 	SignalBus.hiding_action.connect(_on_hide)
 	SignalBus.pickup_action.connect(_on_pickup)
 	SignalBus.prankdo_action.connect(_on_prankdo)
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target_x = position.x
@@ -61,8 +62,12 @@ func _on_pickup(x, y, contener) -> void:
 	_pending_action = Action.PICKUP
 	set_state(State.WALK)
 	
-func _on_prankdo(prank)->void:
-	print(prank.prankName)
+func _on_prankdo(x, y, prank) -> void:
+	target_x = x
+	position.y = y
+	current_prank = prank
+	_pending_action = Action.PRANK
+	set_state(State.WALK)
 	
 func set_state(state) -> void:
 	exit_state()
@@ -134,8 +139,20 @@ func state_handler() -> void:
 
 		Action.NONE:
 			set_state(State.IDLE)
-
-
+		Action.PRANK:
+			_pending_action = Action.NONE
+			var has_all_items = true 
+			for item in current_prank.prankRequiredItems:
+				if not inventory.checkItem(item.itemName):
+					has_all_items = false
+					print("Cant do prank. Missing item: " + item.itemName)
+					break
+			if has_all_items:
+				print("Prank done: " + current_prank.prankName)
+				for item in current_prank.prankRequiredItems:
+					inventory.removeItem(item.itemName)
+			current_prank = null
+			set_state(State.IDLE)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_class("Room"):
 		var room = body as Room

@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="Prank" format=3 uid="uid://5lgt7fffpi1a"]
 
-[ext_resource type="Script" uid="uid://yt4x3dje3uga" path="res://scripts/Prank.gd" id="1_duh7c"]
+[ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scripts/Item.gd" id="1_chnue"]
+[ext_resource type="Script" uid="uid://yt4x3dje3uga" path="res://scripts/Prank.gd" id="2_oscfb"]
 
 [resource]
-script = ExtResource("1_duh7c")
+script = ExtResource("2_oscfb")
+prankName = "blender"
 metadata/_custom_type_script = "uid://yt4x3dje3uga"
