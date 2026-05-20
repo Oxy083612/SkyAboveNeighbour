@@ -4,6 +4,7 @@ signal movement_action(x, y)
 signal hiding_action(x, y, spot_y)
 signal pickup_action(x, y, item_container)
 signal prankdo_action(name)
+signal door_action(x, y, destination)
 
 enum InteractionTypes {
 	PICKUP,
@@ -11,12 +12,9 @@ enum InteractionTypes {
 	INFO,
 }
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

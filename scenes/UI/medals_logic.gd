@@ -1,5 +1,5 @@
 extends Control
-class_name Medals
+class_name Medal
 
 enum MedalState {
 	GOOD,
@@ -19,6 +19,7 @@ func _ready() -> void:
 	texture.texture = medal_none
 	
 func _change_medal(name):
+	print(texture)
 	match name:
 		"bad":
 			texture.texture = medal_bad

@@ -1,5 +1,6 @@
 class_name PlayerCharacter
 extends Node2D
+
 @onready var inventory: Inventory = %Control
 @onready var medal_box: BoxContainer = $Camera2D/Hud/HBoxContainer
 
@@ -17,7 +18,8 @@ enum Action {
 	MOVE,
 	HIDE,
 	PICKUP,
-	PRANK
+	PRANK,
+	DOOR,
 }
 
 @export var speed := 200.0
@@ -29,6 +31,7 @@ var _interaction_y := 0
 var _pending_action := Action.NONE
 var item_container
 var current_room: Room = null
+var target_destination: Marker2D = null
 var current_prank: Prank = null
 
 func _init() -> void:
@@ -36,6 +39,7 @@ func _init() -> void:
 	SignalBus.hiding_action.connect(_on_hide)
 	SignalBus.pickup_action.connect(_on_pickup)
 	SignalBus.prankdo_action.connect(_on_prankdo)
+	SignalBus.door_action.connect(_on_door_vault)
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -68,6 +72,13 @@ func _on_prankdo(x, y, prank) -> void:
 	position.y = y
 	current_prank = prank
 	_pending_action = Action.PRANK
+	set_state(State.WALK)
+	
+func _on_door_vault(x, y, destination) -> void:
+	target_x = x
+	position.y = y
+	target_destination = destination
+	_pending_action = Action.DOOR
 	set_state(State.WALK)
 	
 func set_state(state) -> void:
@@ -114,10 +125,6 @@ func _process(delta: float) -> void:
 
 		if abs(position.x - target_x) < 5:
 			state_handler()
-	
-func _set_up_medals(medal_count) -> void:
-	for x in range(medal_count):
-		medal_box.add_child(Medals.new())
 		
 func state_handler() -> void:
 	match _pending_action:
@@ -154,6 +161,13 @@ func state_handler() -> void:
 				for item in current_prank.prankRequiredItems:
 					inventory.removeItem(item)
 			current_prank = null
+			set_state(State.IDLE)
+			
+		Action.DOOR:
+			_pending_action = Action.NONE
+			position.y = target_destination.position.y
+			item_container = null
+			target_destination = null
 			set_state(State.IDLE)
 			
 		Action.NONE:
