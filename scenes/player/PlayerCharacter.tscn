@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://u78cujvjrvna" path="res://icon.svg" id="1_8ocfk"]
 [ext_resource type="Script" uid="uid://bqvsf20l0syju" path="res://scenes/player/player_character.gd" id="1_chqax"]
 [ext_resource type="PackedScene" uid="uid://b05sxwgncuqqu" path="res://scenes/UI/HUD.tscn" id="3_ur54r"]
+[ext_resource type="PackedScene" uid="uid://cyfcixu53v5b5" path="res://scenes/UI/inventory.tscn" id="4_6nsgb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chqax"]
 atlas = ExtResource("1_8ocfk")
@@ -146,7 +147,14 @@ animation = &"moving-left"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1373251789]
 
-[node name="Hud" parent="Camera2D" unique_id=992104850 instance=ExtResource("3_ur54r")]
+[node name="Control" parent="Camera2D" unique_id=1029236956 instance=ExtResource("4_6nsgb")]
+unique_name_in_owner = true
+offset_left = 1440.3654
+offset_top = 463.85852
+offset_right = 1480.3654
+offset_bottom = 503.85852
+
+[node name="Hud" parent="Camera2D/Control" unique_id=992104850 instance=ExtResource("3_ur54r")]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=941971318]
 
@@ -155,4 +163,4 @@ shape = SubResource("CircleShape2D_8ocfk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
-[editable path="Camera2D/Hud"]
+[editable path="Camera2D/Control/Hud"]

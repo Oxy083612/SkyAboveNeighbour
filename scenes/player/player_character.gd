@@ -152,7 +152,7 @@ func state_handler() -> void:
 			if has_all_items:
 				print("Prank done: " + current_prank.prankName)
 				for item in current_prank.prankRequiredItems:
-					inventory.removeItem(item.itemName)
+					inventory.removeItem(item)
 			current_prank = null
 			set_state(State.IDLE)
 			
