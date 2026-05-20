@@ -3,6 +3,7 @@ extends Node
 signal movement_action(x, y)
 signal hiding_action(x, y, spot_y)
 signal pickup_action(name)
+signal prankdo_action(name)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

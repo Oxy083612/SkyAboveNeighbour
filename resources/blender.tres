@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="Prank" format=3 uid="uid://5lgt7fffpi1a"]
+
+[ext_resource type="Script" uid="uid://yt4x3dje3uga" path="res://scripts/Prank.gd" id="1_duh7c"]
+
+[resource]
+script = ExtResource("1_duh7c")
+metadata/_custom_type_script = "uid://yt4x3dje3uga"
