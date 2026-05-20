@@ -3,10 +3,19 @@
 [ext_resource type="PackedScene" uid="uid://cher18deqtnp7" path="res://rooms/room1.tscn" id="1_gs5g8"]
 [ext_resource type="Script" uid="uid://dur26oe16hpu5" path="res://levels/debug_level.gd" id="1_objww"]
 [ext_resource type="PackedScene" uid="uid://cyfg3dnexb7tu" path="res://player/PlayerCharacter.tscn" id="2_b2lhc"]
-[ext_resource type="Script" uid="uid://bqvsf20l0syju" path="res://player/player_character.gd" id="2_objww"]
 [ext_resource type="PackedScene" uid="uid://bqlb7suq0qa35" path="res://assets/hiding_spot.tscn" id="5_618h7"]
 [ext_resource type="PackedScene" uid="uid://cyfcixu53v5b5" path="res://scenes/inventory.tscn" id="6_exmg7"]
 [ext_resource type="PackedScene" uid="uid://myilt12pfdmo" path="res://scenes/item_container.tscn" id="7_exmg7"]
+[ext_resource type="Script" uid="uid://b3mkx1lc4aoff" path="res://scripts/Item.gd" id="8_hyqnr"]
+[ext_resource type="PackedScene" uid="uid://bq2hx8vvhjhlc" path="res://door.tscn" id="8_s0miu"]
+
+[sub_resource type="Resource" id="Resource_1fhno"]
+script = ExtResource("8_hyqnr")
+metadata/_custom_type_script = "uid://b3mkx1lc4aoff"
+
+[sub_resource type="Resource" id="Resource_6o08p"]
+script = ExtResource("8_hyqnr")
+metadata/_custom_type_script = "uid://b3mkx1lc4aoff"
 
 [node name="Node2D" type="Node2D" unique_id=2145504740]
 script = ExtResource("1_objww")
@@ -16,7 +25,6 @@ position = Vector2(77, 152)
 
 [node name="PlayerCharacter" parent="." unique_id=2119374531 instance=ExtResource("2_b2lhc")]
 position = Vector2(847, 481)
-script = ExtResource("2_objww")
 speed = 250.0
 
 [node name="HidingSpot" parent="." unique_id=66915524 instance=ExtResource("5_618h7")]
@@ -25,4 +33,14 @@ position = Vector2(316, 283)
 [node name="Control" parent="." unique_id=1029236956 instance=ExtResource("6_exmg7")]
 unique_name_in_owner = true
 
-[node name="Area2D" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
+[node name="ItemContainer" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
+position = Vector2(583, 291)
+items = Array[ExtResource("8_hyqnr")]([SubResource("Resource_1fhno"), SubResource("Resource_6o08p")])
+
+[node name="Door" parent="." unique_id=1293053166 instance=ExtResource("8_s0miu")]
+position = Vector2(526, 456)
+
+[node name="DestinationPoint" parent="Door" index="2" unique_id=1317049880]
+position = Vector2(3, -469)
+
+[editable path="Door"]

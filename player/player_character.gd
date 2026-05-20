@@ -15,6 +15,8 @@ enum Action {
 	NONE,
 	MOVE,
 	HIDE,
+	PICKUP,
+	
 }
 
 @export var speed := 200.0
@@ -24,6 +26,8 @@ var CurrentState := State.IDLE
 var is_hidden := false
 var _interaction_y := 0
 var _pending_action := Action.NONE
+var item_container
+var current_room: Room = null
 
 
 func _init() -> void:
@@ -49,8 +53,14 @@ func _on_hide(x, y, spot_y) -> void:
 	_interaction_y = spot_y
 	_pending_action = Action.HIDE
 	set_state(State.WALK)
-func _on_pickup(name) -> void:
-	inventory.addItem(name)
+	
+func _on_pickup(x, y, contener) -> void:
+	target_x = x
+	position.y = y
+	item_container = contener as ItemPickup
+	_pending_action = Action.PICKUP
+	set_state(State.WALK)
+	
 	
 func set_state(state) -> void:
 	exit_state()
@@ -103,11 +113,29 @@ func state_handler() -> void:
 	match _pending_action:
 		Action.MOVE:
 			_pending_action = Action.NONE
+			item_container = null
 			set_state(State.IDLE)
 
 		Action.HIDE:
 			_pending_action = Action.NONE
+			item_container = null
 			set_state(State.HIDDEN)
+
+		Action.PICKUP:
+			_pending_action = Action.NONE
+			if not item_container.is_empty:	
+				for item in item_container.items:
+					inventory.addItem(item)
+				item_container.is_empty = true
+			item_container = null
+			set_state(State.IDLE)
 
 		Action.NONE:
 			set_state(State.IDLE)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_class("Room"):
+		var room = body as Room
+		print(room)
+		current_room = room
