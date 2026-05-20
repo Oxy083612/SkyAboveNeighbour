@@ -3,22 +3,21 @@
 [ext_resource type="Script" uid="uid://d0dy5t4rdtvne" path="res://UI/medals_logic.gd" id="1_kmeud"]
 [ext_resource type="Texture2D" uid="uid://bbernlcjhhdo" path="res://UI/pngs/bronze_trophy.png" id="2_ab4dx"]
 
-[node name="MedalContainer" type="Control" unique_id=1831873401]
-layout_mode = 3
-anchors_preset = 15
+[node name="MedalContainer" type="CenterContainer" unique_id=2128654677]
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.093
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -99.840004
+offset_top = -100.44
+offset_right = -1720.0
+offset_bottom = -880.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_kmeud")
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1887484431]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer" unique_id=1212772934]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1212772934]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_ab4dx")

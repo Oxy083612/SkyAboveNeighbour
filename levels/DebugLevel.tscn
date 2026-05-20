@@ -34,7 +34,7 @@ position = Vector2(316, 283)
 unique_name_in_owner = true
 
 [node name="ItemContainer" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
-position = Vector2(583, 291)
+position = Vector2(745, 287)
 items = Array[ExtResource("8_hyqnr")]([SubResource("Resource_1fhno"), SubResource("Resource_6o08p")])
 
 [node name="Door" parent="." unique_id=1293053166 instance=ExtResource("8_s0miu")]

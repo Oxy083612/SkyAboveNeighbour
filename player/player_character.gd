@@ -1,6 +1,7 @@
 class_name PlayerCharacter
 extends Node2D
 @onready var inventory: Inventory = %Control
+@onready var medal_box: BoxContainer = $Camera2D/Hud/HBoxContainer
 
 enum State {
 	IDLE,
@@ -114,7 +115,9 @@ func _process(delta: float) -> void:
 		if abs(position.x - target_x) < 5:
 			state_handler()
 	
-		
+func _set_up_medals(medal_count) -> void:
+	for x in range(medal_count):
+		medal_box.add_child(Medals.new())
 		
 func state_handler() -> void:
 	match _pending_action:
