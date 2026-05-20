@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://blg0vvyu2m0r8"]
+
+[ext_resource type="Script" uid="uid://cewfh011sfl7m" path="res://scripts/prankDo.gd" id="1_343xu"]
+[ext_resource type="Script" uid="uid://yt4x3dje3uga" path="res://scripts/Prank.gd" id="2_8ubjq"]
+[ext_resource type="Texture2D" uid="uid://dwbt1xv2qfd2e" path="res://assets/blen.png" id="3_2hh5f"]
+
+[sub_resource type="Resource" id="Resource_6o08p"]
+script = ExtResource("2_8ubjq")
+metadata/_custom_type_script = "uid://yt4x3dje3uga"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1fhno"]
+size = Vector2(40, 43.5)
+
+[node name="Area2D2" type="Area2D" unique_id=2124751569]
+script = ExtResource("1_343xu")
+prank = SubResource("Resource_6o08p")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2110406224]
+position = Vector2(607.9999, 299.99997)
+scale = Vector2(0.072222225, 0.06851852)
+texture = ExtResource("3_2hh5f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1710727340]
+position = Vector2(607, 296.75)
+shape = SubResource("RectangleShape2D_1fhno")

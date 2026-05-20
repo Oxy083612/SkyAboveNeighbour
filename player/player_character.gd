@@ -34,7 +34,7 @@ func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
 	SignalBus.hiding_action.connect(_on_hide)
 	SignalBus.pickup_action.connect(_on_pickup)
-	
+	SignalBus.prankdo_action.connect(_on_prankdo)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	target_x = position.x
@@ -61,6 +61,8 @@ func _on_pickup(x, y, contener) -> void:
 	_pending_action = Action.PICKUP
 	set_state(State.WALK)
 	
+func _on_prankdo(prank)->void:
+	print(prank.prankName)
 	
 func set_state(state) -> void:
 	exit_state()
