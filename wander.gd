@@ -29,4 +29,3 @@ func _get_next_position():
 	if temp_positions.is_empty():
 		_get_positions()
 	current_position = temp_positions.pop_front()
-	direction = to_local(current_position.position).normalized()
