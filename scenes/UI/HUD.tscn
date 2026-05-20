@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b05sxwgncuqqu"]
 
-[ext_resource type="PackedScene" uid="uid://ls7pkhr1b2k1" path="res://scenes/UI/medal_box.tscn" id="1_yixhe"]
+[ext_resource type="Script" uid="uid://ci5dve3qp4v20" path="res://scenes/UI/hud.gd" id="1_7n4fj"]
 
 [node name="Hud" type="CanvasLayer" unique_id=992104850]
+script = ExtResource("1_7n4fj")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1881481924]
 anchors_preset = -1
@@ -12,12 +13,3 @@ offset_bottom = 0.44000244
 grow_horizontal = 0
 theme_override_constants/separation = 40
 alignment = 1
-
-[node name="MedalContainer" parent="HBoxContainer" unique_id=2128654677 instance=ExtResource("1_yixhe")]
-layout_mode = 2
-
-[node name="MedalContainer2" parent="HBoxContainer" unique_id=398984258 instance=ExtResource("1_yixhe")]
-layout_mode = 2
-
-[node name="MedalContainer3" parent="HBoxContainer" unique_id=1681919504 instance=ExtResource("1_yixhe")]
-layout_mode = 2

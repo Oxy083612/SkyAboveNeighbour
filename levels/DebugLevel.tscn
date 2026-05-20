@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://8twljayq0k4h" path="res://assets/placeholders/tempitemsprite.png" id="9_f3y16"]
 [ext_resource type="PackedScene" uid="uid://oyfyx44rrcsn" path="res://scenes/placeables/placeable_prank.tscn" id="11_fht7i"]
 [ext_resource type="Resource" uid="uid://5lgt7fffpi1a" path="res://resources/blender.tres" id="12_pffqa"]
+[ext_resource type="PackedScene" uid="uid://cxnc44udt5tft" path="res://bin/floor_area.tscn" id="13_cfos4"]
 [ext_resource type="Texture2D" uid="uid://dwbt1xv2qfd2e" path="res://assets/placeholders/blen.png" id="13_ymomd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkkvq"]
@@ -20,20 +21,31 @@ radius = 12.84
 script = ExtResource("1_objww")
 
 [node name="room1" parent="." unique_id=1421512101 instance=ExtResource("1_gs5g8")]
-position = Vector2(87, 148)
+position = Vector2(405, 82)
 
-[node name="PlayerCharacter" parent="." unique_id=2119374531 instance=ExtResource("2_b2lhc")]
-position = Vector2(847, 481)
-speed = 250.0
+[node name="Door" parent="room1" index="3" unique_id=1293053166 node_paths=PackedStringArray("destination_door")]
+destination_floor = 1
+destination_door = NodePath("../../room2/Door")
+
+[node name="room2" parent="." unique_id=1579294699 instance=ExtResource("1_gs5g8")]
+position = Vector2(405, -432)
+
+[node name="Door" parent="room2" index="3" unique_id=1293053166 node_paths=PackedStringArray("destination_door")]
+current_floor = 1
+destination_door = NodePath("../../room1/Door")
 
 [node name="HidingSpot" parent="." unique_id=66915524 instance=ExtResource("5_618h7")]
-position = Vector2(329, 338)
+position = Vector2(651, 258)
 
 [node name="Control" parent="." unique_id=1029236956 instance=ExtResource("6_exmg7")]
 unique_name_in_owner = true
+offset_left = 648.0
+offset_top = 671.0
+offset_right = 688.0
+offset_bottom = 711.0
 
 [node name="ItemContainer" parent="." unique_id=164163124 instance=ExtResource("7_exmg7")]
-position = Vector2(535, 353)
+position = Vector2(1456, 273)
 items = Array[ExtResource("8_hyqnr")]([ExtResource("8_cfos4")])
 
 [node name="Sprite2D" parent="ItemContainer" index="0" unique_id=1010259196]
@@ -45,7 +57,7 @@ texture = ExtResource("9_f3y16")
 position = Vector2(1, -3)
 
 [node name="Area2D" parent="." unique_id=747317249 instance=ExtResource("11_fht7i")]
-position = Vector2(720, 352)
+position = Vector2(1457, 203)
 prank = ExtResource("12_pffqa")
 
 [node name="Sprite2D" parent="Area2D" index="0" unique_id=1019381928]
@@ -57,5 +69,14 @@ texture = ExtResource("13_ymomd")
 position = Vector2(2, -2)
 shape = SubResource("CircleShape2D_qkkvq")
 
+[node name="PlayerCharacter" parent="." unique_id=2119374531 instance=ExtResource("2_b2lhc")]
+position = Vector2(1179, 450)
+speed = 250.0
+
+[node name="floor_area" parent="." unique_id=313706352 instance=ExtResource("13_cfos4")]
+position = Vector2(1560, -17)
+
+[editable path="room1"]
+[editable path="room2"]
 [editable path="ItemContainer"]
 [editable path="Area2D"]
