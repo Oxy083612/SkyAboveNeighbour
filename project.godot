@@ -27,6 +27,8 @@ window/size/viewport_height=1080
 [global_group]
 
 path_manager=""
+doors=""
+FirstEnemy=""
 
 [physics]
 
