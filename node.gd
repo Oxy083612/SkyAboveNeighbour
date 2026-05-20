@@ -5,20 +5,31 @@ class_name PathManager
 var doors : Array[Door] = []
 var gooddoors : Array[Door] = []
 
+
 func _ready():
 	
-	var doors = get_tree().get_nodes_in_group("doors")
-	
-	
-	
+	for node in get_tree().get_nodes_in_group("doors"):
+		var door = node as Door
+		if door:
+			doors.append(door)
+
 
 
 func give_doors(i, j):
+	gooddoors.clear()
+	for x : Door in doors:
+		if x.current_floor == i && x.destination_floor == j:
+			gooddoors.append(x)
+	return gooddoors
+	
+
+	
+	"""
 	for Door in doors:
 		if Door.current_floor == i && Door.destination_floor == j:
 			gooddoors.append(Door)
 	return gooddoors
-
+"""
 
 
 """
