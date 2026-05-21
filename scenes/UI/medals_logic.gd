@@ -18,9 +18,9 @@ func _ready() -> void:
 	current_state = MedalState.NONE
 	texture.texture = medal_none
 	
-func _change_medal(name):
+func _change_medal(type):
 	print(texture)
-	match name:
+	match type:
 		"bad":
 			texture.texture = medal_bad
 			current_state = MedalState.BAD

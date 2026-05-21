@@ -19,9 +19,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkkvq"]
 radius = 12.84
 
-[node name="Node2D" type="Node2D" unique_id=1856655536]
+[node name="Node2D" type="Node2D" unique_id=2145504740]
 script = ExtResource("1_objww")
-metadata/_custom_type_script = "uid://duulptbebx0n"
 
 [node name="room1" parent="." unique_id=1421512101 node_paths=PackedStringArray("floor_manager") instance=ExtResource("1_gs5g8")]
 position = Vector2(87, 148)
@@ -35,7 +34,7 @@ destination_door = NodePath("../../room2/Door")
 
 [node name="room2" parent="." unique_id=638964014 node_paths=PackedStringArray("floor_manager") instance=ExtResource("1_gs5g8")]
 position = Vector2(87, -336)
-floor_level = 1
+floor = 1
 floor_manager = NodePath("../FloorManager")
 
 [node name="Door" parent="room2" index="2" unique_id=1293053166 node_paths=PackedStringArray("floor_manager", "destination_door")]
@@ -47,7 +46,6 @@ destination_door = NodePath("../../room1/Door")
 [node name="PlayerCharacter" parent="." unique_id=2119374531 node_paths=PackedStringArray("floor_manager") instance=ExtResource("2_b2lhc")]
 position = Vector2(847, 481)
 speed = 250.0
-floor_level = 0
 floor_manager = NodePath("../FloorManager")
 
 [node name="HidingSpot" parent="." unique_id=66915524 node_paths=PackedStringArray("floor_manager") instance=ExtResource("5_618h7")]
@@ -55,7 +53,7 @@ position = Vector2(329, 338)
 floor_manager = NodePath("../FloorManager")
 
 [node name="ItemContainer" parent="." unique_id=164163124 node_paths=PackedStringArray("floor_manager") instance=ExtResource("7_exmg7")]
-position = Vector2(808, 353)
+position = Vector2(535, 353)
 items = Array[ExtResource("8_hyqnr")]([ExtResource("8_cfos4")])
 floor_manager = NodePath("../FloorManager")
 
@@ -97,7 +95,6 @@ floors = [NodePath("FloorLevel"), NodePath("FloorLevel2")]
 
 [node name="FloorLevel" parent="FloorManager" unique_id=513860481 instance=ExtResource("14_f3y16")]
 position = Vector2(1108, 74)
-floor_level = 1
 
 [node name="FloorLevel2" parent="FloorManager" unique_id=793027985 instance=ExtResource("14_f3y16")]
 position = Vector2(1117, 553)
