@@ -24,6 +24,7 @@ SignalBus="*uid://fqd884l32jk6"
 path_manager=""
 doors=""
 FirstEnemy=""
+floor=""
 
 [physics]
 
