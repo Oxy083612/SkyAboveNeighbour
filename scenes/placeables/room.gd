@@ -1,8 +1,8 @@
+extends Node2D
 class_name Room
 
-extends Node2D
 
-@export var floor := 0
+@export var floor_level := 0
 @export var floor_manager: FloorManager = null
 var input_flag := false
 
@@ -22,7 +22,7 @@ func _on_area_2d_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			input_flag = true
-			SignalBus.movement_action.emit(get_global_mouse_position().x, floor_manager._get_floor_position(floor))
+			SignalBus.movement_action.emit(get_global_mouse_position().x, floor_manager._get_floor_position(floor_level))
 	
 	input_flag = false
 	

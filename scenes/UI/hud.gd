@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var medal_container = $HBoxContainer
+@onready var medal_container = $MedalContainer
 
 @onready var medal_inst := preload("res://scenes/UI/medal_box.tscn")
 
@@ -13,12 +13,6 @@ func _ready() -> void:
 		_initiate_medal_container(pranks_good)
 	else:
 		_initiate_medal_container(pranks_bad)	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _initiate_medal_container(number):
 	for x in range(number):
