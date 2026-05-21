@@ -46,8 +46,8 @@ func _init() -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	target_x = position.x
-	target_y = position.y
+	target_x = global_position.x
+	global_position.y = floor_manager._get_floor_position(floor)
 
 func _on_move(x, y) -> void:
 	target_x = x
