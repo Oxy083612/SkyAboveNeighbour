@@ -3,25 +3,29 @@ extends Node
 class_name PathManager
 
 var doors : Array[Door] = []
-var gooddoors : Array[Door] = []
 
 func _ready():
-	
+
 	for node in get_tree().get_nodes_in_group("doors"):
+
 		var door = node as Door
+
 		if door:
 			doors.append(door)
 
 
-
-func give_doors(i, j):
-	gooddoors.clear()
-	for x : Door in doors:
-		if x.current_floor == i && x.destination_floor == j:
-			gooddoors.append(x)
-	return gooddoors
+func give_doors(current_floor, destination_floor):
+	print("tarara")
+	var valid_doors : Array[Door] = []
 	
+	for door : Door in doors:
+		print(door)
+		if door.current_floor == current_floor \
+		and door.destination_floor == destination_floor:
 
+			valid_doors.append(door)
+
+	return valid_doors
 	
 	"""
 	for Door in doors:
