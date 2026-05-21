@@ -11,8 +11,9 @@ region = Rect2(985.24243, 103.47273, 926.51294, 453.8849)
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_dtj1q"]
 points = PackedVector2Array(589, 31, 470, -79, -223, -79, -332, 32)
 
-[node name="room1" type="Node2D" unique_id=1421512101]
+[node name="room1" type="Node2D" unique_id=339256762]
 script = ExtResource("1_0tg7r")
+metadata/_custom_type_script = "uid://duulptbebx0n"
 
 [node name="FullRender2" type="Sprite2D" parent="." unique_id=204317490]
 position = Vector2(463, 226)

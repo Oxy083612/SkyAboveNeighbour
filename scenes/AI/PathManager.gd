@@ -23,7 +23,7 @@ func give_doors(i, j):
 	
 
 	
-	"""
+"""
 	for Door in doors:
 		if Door.current_floor == i && Door.destination_floor == j:
 			gooddoors.append(Door)

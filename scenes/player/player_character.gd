@@ -2,7 +2,6 @@ class_name PlayerCharacter
 extends Node2D
 
 @onready var inventory: Inventory = %Control
-@onready var medal_box: BoxContainer = $Camera2D/Hud/HBoxContainer
 
 enum State {
 	IDLE,
@@ -34,7 +33,7 @@ var current_room: Room = null
 var target_destination: Marker2D = null
 var current_prank: Prank = null
 var target_floor: int = 0
-@export var floor:= 0
+@export var floor_level:= 0
 @export var floor_manager: FloorManager
 
 func _init() -> void:
@@ -46,8 +45,10 @@ func _init() -> void:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	@warning_ignore("narrowing_conversion")
 	target_x = global_position.x
-	global_position.y = floor_manager._get_floor_position(floor)
+	global_position.y = floor_manager._get_floor_position(floor_level)
+	print(global_position.y)
 
 func _on_move(x, y) -> void:
 	target_x = x
@@ -77,8 +78,8 @@ func _on_prankdo(x, y, prank) -> void:
 	_pending_action = Action.PRANK
 	set_state(State.WALK)
 	
-func _on_door_vault(x, y, destination, floor) -> void:
-	target_floor = floor
+func _on_door_vault(x, y, destination, _floor_level) -> void:
+	target_floor = _floor_level
 	target_x = x
 	position.y = y
 	target_destination = destination
@@ -114,7 +115,7 @@ func exit_state() -> void:
 		State.WALK:
 			pass
 		State.HIDDEN:
-			global_position.y = floor_manager._get_floor_position(floor)
+			global_position.y = floor_manager._get_floor_position(floor_level)
 		State.DOOR_VAULT:
 			pass
 		State.CREEP:
@@ -149,7 +150,6 @@ func state_handler() -> void:
 				for item in item_container.items:
 					inventory.addItem(item)
 				item_container.is_empty = true
-				item_container.queue_free() 
 			item_container = null
 			set_state(State.IDLE)
 			
@@ -169,7 +169,7 @@ func state_handler() -> void:
 			set_state(State.IDLE)
 			
 		Action.DOOR:
-			floor = target_floor
+			floor_level = target_floor
 			_pending_action = Action.NONE
 			position.y = target_destination.position.y
 			item_container = null
@@ -179,7 +179,9 @@ func state_handler() -> void:
 		Action.NONE:
 			set_state(State.IDLE)
 			
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_class("Room"):
-		var room = body as Room
-		current_room = room
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_parent() is Room:
+		current_room = area.get_parent()
+		
