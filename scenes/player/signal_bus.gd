@@ -4,7 +4,7 @@ signal movement_action(x, y)
 signal hiding_action(x, y, spot_y)
 signal pickup_action(x, y, item_container)
 signal prankdo_action(name)
-signal door_action(x, y, destination)
+signal door_action(x, y, destination, destination_floor)
 
 enum InteractionTypes {
 	PICKUP,

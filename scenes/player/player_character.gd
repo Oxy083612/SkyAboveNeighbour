@@ -33,6 +33,9 @@ var item_container
 var current_room: Room = null
 var target_destination: Marker2D = null
 var current_prank: Prank = null
+var target_floor: int = 0
+@export var floor:= 0
+@export var floor_manager: FloorManager
 
 func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
@@ -74,7 +77,8 @@ func _on_prankdo(x, y, prank) -> void:
 	_pending_action = Action.PRANK
 	set_state(State.WALK)
 	
-func _on_door_vault(x, y, destination) -> void:
+func _on_door_vault(x, y, destination, floor) -> void:
+	target_floor = floor
 	target_x = x
 	position.y = y
 	target_destination = destination
@@ -91,10 +95,11 @@ func enter_state(state) -> void:
 		State.IDLE:
 			pass
 		State.WALK:
+			print("target_x: ", target_x)
 			pass
 		State.HIDDEN:
 			is_hidden = true
-			position.y = _interaction_y
+			global_position.y = _interaction_y
 		State.DOOR_VAULT:
 			pass
 		State.CREEP:
@@ -109,7 +114,7 @@ func exit_state() -> void:
 		State.WALK:
 			pass
 		State.HIDDEN:
-			position.y = 450
+			global_position.y = floor_manager._get_floor_position(floor)
 		State.DOOR_VAULT:
 			pass
 		State.CREEP:
@@ -120,10 +125,10 @@ func exit_state() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if CurrentState == State.WALK:
-		var dir = sign(target_x - position.x)
-		position.x += dir * speed * delta
+		var dir = sign(target_x - global_position.x)
+		global_position.x += dir * speed * delta
 
-		if abs(position.x - target_x) < 5:
+		if abs(global_position.x - target_x) < 5:
 			state_handler()
 		
 func state_handler() -> void:
@@ -164,6 +169,7 @@ func state_handler() -> void:
 			set_state(State.IDLE)
 			
 		Action.DOOR:
+			floor = target_floor
 			_pending_action = Action.NONE
 			position.y = target_destination.position.y
 			item_container = null
@@ -176,5 +182,4 @@ func state_handler() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_class("Room"):
 		var room = body as Room
-		print(room)
 		current_room = room

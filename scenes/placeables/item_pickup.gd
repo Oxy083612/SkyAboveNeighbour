@@ -2,6 +2,8 @@ extends Area2D
 class_name ItemPickup
 
 @export var items: Array[Item]
+@export var floor_manager: FloorManager
+@export var floor: int
 
 var input_flag := false
 @export var is_empty := false
@@ -16,5 +18,5 @@ func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 			input_flag = true
-			SignalBus.pickup_action.emit(position.x, 450, self)
+			SignalBus.pickup_action.emit(position.x, floor_manager._get_floor_position(floor), self)
 	input_flag = false
