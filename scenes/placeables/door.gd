@@ -20,7 +20,7 @@ func _on_body_entered(body: Node2D) -> void:
 		enemy.change_floor(destination_floor, $DestinationPoint.global_position, self)
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if input_flag:
 		return
 
