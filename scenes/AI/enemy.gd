@@ -28,7 +28,7 @@ func _ready():
 
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if doeswander:
 		#print("ideeeee")
 		go_to_interest_point()
@@ -98,9 +98,9 @@ func find_door():
 	#print(doors)
 
 
-func go_to(y, floor):
+func go_to(y, floor_level):
 	current_target_position = y
-	target_floor = floor
+	target_floor = floor_level
 
 
 func change_floor(i, j, k):
