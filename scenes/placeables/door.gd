@@ -3,6 +3,7 @@ class_name Door
 extends Area2D
 @export var current_floor : int
 @export var destination_floor : int
+@export var floor_manager : FloorManager
 
 @export var destination_door : Door
 @onready var destination_point = $DestinationPoint
@@ -24,9 +25,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		return
 
 	if event is InputEventMouseButton and event.pressed:
-		print("UAUAU")
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			input_flag = true
-			SignalBus.door_action.emit(position.x, 450 * (destination_floor + 1), destination_point)
+			destination_point.position = Vector2(destination_point.position.x, floor_manager._get_floor_position(destination_floor))
+			SignalBus.door_action.emit(global_position.x, floor_manager._get_floor_position(current_floor), destination_point, destination_floor)
 	
 	input_flag = false

@@ -14,15 +14,16 @@ size = Vector2(214, 334)
 script = ExtResource("1_v6xrn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374099344]
+position = Vector2(-106, -335)
 scale = Vector2(0.6, 0.6)
 texture = SubResource("AtlasTexture_pmiq7")
 centered = false
 
 [node name="DestinationPoint" type="Marker2D" parent="." unique_id=1317049880]
-position = Vector2(106, 166)
+position = Vector2(0, -169)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=102572721]
-position = Vector2(107, 168)
+position = Vector2(1, -167)
 shape = SubResource("RectangleShape2D_v6xrn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

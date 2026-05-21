@@ -43,10 +43,9 @@ current_floor = 1
 floor_manager = NodePath("../../FloorManager")
 destination_door = NodePath("../../room1/Door")
 
-[node name="PlayerCharacter" parent="." unique_id=2119374531 node_paths=PackedStringArray("floor_manager") instance=ExtResource("2_b2lhc")]
+[node name="PlayerCharacter" parent="." unique_id=2119374531 instance=ExtResource("2_b2lhc")]
 position = Vector2(847, 481)
 speed = 250.0
-floor_manager = NodePath("../FloorManager")
 
 [node name="HidingSpot" parent="." unique_id=66915524 node_paths=PackedStringArray("floor_manager") instance=ExtResource("5_618h7")]
 position = Vector2(329, 338)
