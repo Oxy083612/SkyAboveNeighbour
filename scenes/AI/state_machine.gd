@@ -9,7 +9,6 @@ var current_state : StateEnemy
 var states := {}
 
 func _ready():
-
 	for child in get_children():
 
 		if child is StateEnemy:
@@ -22,7 +21,8 @@ func _ready():
 		current_state = get_node(initial_state)
 
 		if current_state:
-			current_state.Enter()
+			current_state.call_deferred("Enter")
+			
 
 
 func _process(delta):
