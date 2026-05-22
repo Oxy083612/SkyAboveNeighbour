@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://njxx0w2sguqg" path="res://assets/placeholders/bor3.png" id="2_iifgy"]
 [ext_resource type="Script" uid="uid://d1uxr3umtv2io" path="res://scenes/AI/States/EnemyWalk.gd" id="3_4a744"]
 [ext_resource type="Script" uid="uid://bsteogovtkwrw" path="res://scenes/AI/States/EnemyIdle.gd" id="3_fa8gx"]
+[ext_resource type="Script" uid="uid://cs33jtcxp44dp" path="res://scenes/AI/States/EnemyDoorEnter.gd" id="4_hmc6k"]
+[ext_resource type="Script" uid="uid://clls15oxcoaov" path="res://scenes/AI/States/EnemyDoorExit.gd" id="5_bs03k"]
 [ext_resource type="Texture2D" uid="uid://dxvgtugidvrck" path="res://assets/enemy/spritesheet.png" id="5_il1m5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
@@ -2269,6 +2271,12 @@ script = ExtResource("3_fa8gx")
 
 [node name="EnemyWalk" type="Node" parent="StateMachine" unique_id=883938252]
 script = ExtResource("3_4a744")
+
+[node name="EnemyDoorEnter" type="Node" parent="StateMachine" unique_id=1613147103]
+script = ExtResource("4_hmc6k")
+
+[node name="EnemyDoorExit" type="Node" parent="StateMachine" unique_id=1715581556]
+script = ExtResource("5_bs03k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063145728]
 position = Vector2(4.7683716e-07, -9.536743e-07)
