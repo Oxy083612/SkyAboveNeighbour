@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bru3w5lykwwl5"]
+
+[ext_resource type="Script" uid="uid://duulptbebx0n" path="res://scenes/placeables/room.gd" id="1_q7can"]
+[ext_resource type="Texture2D" uid="uid://c3n0fysnmxorx" path="res://assets/aaa.png" id="2_dand2"]
+[ext_resource type="PackedScene" uid="uid://oyfyx44rrcsn" path="res://scenes/placeables/placeable_prank.tscn" id="3_dand2"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_q7can"]
+points = PackedVector2Array(898, 62, 617, -107, -379, -103, -566, 65)
+
+[node name="RoomLecture" type="Node2D" unique_id=1895595740]
+script = ExtResource("1_q7can")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2125478080]
+texture = ExtResource("2_dand2")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1142387214]
+position = Vector2(-25, 28)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1176880099]
+position = Vector2(-140, 96)
+shape = SubResource("ConvexPolygonShape2D_q7can")
+
+[node name="Area2D2" parent="." unique_id=747317249 instance=ExtResource("3_dand2")]
+position = Vector2(380, 72)
