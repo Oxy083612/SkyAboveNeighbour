@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dxmddvp2as8x" path="res://scenes/placeables/floor_level.tscn" id="14_f3y16"]
 [ext_resource type="Script" uid="uid://5nye1ypnjsra" path="res://scenes/placeables/floor_manager.gd" id="14_fht7i"]
 [ext_resource type="PackedScene" uid="uid://dvb0cb0rbo5mf" path="res://scenes/AI/enemy.tscn" id="16_pffqa"]
+[ext_resource type="PackedScene" uid="uid://bicl1onjlxd24" path="res://scenes/UI/bgplayer.tscn" id="17_ymomd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qkkvq"]
 radius = 12.84
@@ -104,6 +105,8 @@ position = Vector2(1117, 553)
 
 [node name="Enemy" parent="." unique_id=1191606021 instance=ExtResource("16_pffqa")]
 position = Vector2(226, 450)
+
+[node name="Bgplayer" parent="." unique_id=518193303 instance=ExtResource("17_ymomd")]
 
 [editable path="room1"]
 [editable path="room1/Door"]
