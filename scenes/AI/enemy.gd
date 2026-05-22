@@ -19,6 +19,8 @@ var doorfound := false
 var doors : Array[Door] = []
 var door : Door
 var door_target_position = -1
+var side_door : Door
+
 
 var direction
 
@@ -46,6 +48,13 @@ func move_to_target():
 	else:
 		direction = sign(current_target_position.x - global_position.x)
 
+	if direction > 0:
+		animated_sprite.flip_h = true
+	else:
+		#print(direction)
+		animated_sprite.flip_h = false
+
+	print(direction)
 	velocity.x = direction * speed
 	velocity.y = 0
 
@@ -70,7 +79,7 @@ func go_to(target_position : Vector2, floor : int):
 
 
 func update_path():
-
+	#print(direction)
 	if current_floor == target_floor:
 		return
 
@@ -109,13 +118,41 @@ func change_floor(i, j, k : Door):
 
 	if k == door:
 		
+		state_machine.on_child_transition(state_machine.current_state, "EnemyDoorEnter")
 		position.y = floors[i].position.y
 		current_floor = i
 		current_room = k.destination_door.get_parent()
 		door_target_position = -1
 		doorfound = false
-		detect_player_check()
+		state_machine.on_child_transition(state_machine.current_state, "EnemyDoorExit")
 		
+	else:
+		if i == current_floor:
+			
+			if k.position.x > current_target_position.x && k.is_in_group("rightDoor"):
+				side_door = k
+				state_machine.on_child_transition(state_machine.current_state, "EnemyDoorEnter")
+				position.x = side_door.destination_door.position.x
+				#current_room = k.destination_door.get_parent()
+				door_target_position = -1
+				doorfound = false
+				state_machine.on_child_transition(state_machine.current_state, "EnemyDoorExit")
+			elif k.position.x < current_target_position.x && k.is_in_group("leftDoor"):
+				side_door = k
+				state_machine.on_child_transition(state_machine.current_state, "EnemyDoorEnter")
+				position.x = side_door.destination_door.position.x
+				#current_room = k.destination_door.get_parent()
+				door_target_position = -1
+				doorfound = false
+				state_machine.on_child_transition(state_machine.current_state, "EnemyDoorExit")
+				
+			
+	#side_door = null
+
+			
+	#detect_player_check()
+	#door = null
+	
 func detect_player_check():
 	if current_room == player_character.get_current_room():
 		on_detect_player()
@@ -125,7 +162,7 @@ func on_detect_player():
 	queue_free()
 
 func on_interest_point(point):
-
+	#print("mamyto")
 	if state_machine.current_state is EnemyWalk:
 
 		state_machine.current_state.on_interest_point(point)
@@ -137,12 +174,15 @@ func _play_animation(animation_name) -> void:
 			animated_sprite.play("idle")
 			pass
 		"move":
+			#print(direction)
 			if direction > 0:
 				print(direction)
 				animated_sprite.flip_h = false
 				animated_sprite.play("move")
 			else:
-				print(direction)
+				#print(direction)
 				animated_sprite.flip_h = true
 				animated_sprite.play("move")
 			pass
+
+			

@@ -7,8 +7,14 @@ extends Area2D
 
 @export var destination_door : Door
 @onready var destination_point = $DestinationPoint
+@onready var animated_sprite = $AnimatedSprite2D
 
 var input_flag = false
+
+
+func _ready() -> void:
+	_play_animation("idle")
+
 
 func _get_exit_position() -> Vector2:
 	return destination_point.global_position
@@ -31,3 +37,39 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 			SignalBus.door_action.emit(global_position.x, floor_manager._get_floor_position(current_floor), destination_point, destination_floor)
 	
 	input_flag = false
+
+func _play_animation(animation_name) -> void:
+	match animation_name:
+		"idle":
+			if self.is_in_group("rightDoor"):
+				animated_sprite.flip_h = true
+				animated_sprite.play("side_idle")
+			elif self.is_in_group("leftDoor"):
+				animated_sprite.flip_h = false
+				animated_sprite.play("side_idle")
+			else:
+				animated_sprite.flip_h = false
+				animated_sprite.play("idle")
+			
+			
+		"door_enter":
+			if self.is_in_group("rightDoor"):
+				animated_sprite.flip_h = false
+				animated_sprite.play("side_door_enter")
+			elif self.is_in_group("leftDoor"):
+				animated_sprite.flip_h = true
+				animated_sprite.play("side_door_enter")
+			else:
+				animated_sprite.flip_h = false
+				animated_sprite.play("door_enter")
+		"door_exit":
+			if self.is_in_group("rightDoor"):
+				animated_sprite.flip_h = true
+				animated_sprite.play("side_door_exit")
+			elif self.is_in_group("leftDoor"):
+				animated_sprite.flip_h = false
+				animated_sprite.play("side_door_exit")
+			else:
+				animated_sprite.flip_h = false
+				animated_sprite.play("door_exit")
+			

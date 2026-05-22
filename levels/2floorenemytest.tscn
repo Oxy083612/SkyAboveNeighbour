@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cjw3wcw67olba" path="res://scenes/AI/interest_point.tscn" id="4_wft5d"]
 [ext_resource type="PackedScene" uid="uid://cbo5of5bdy4dd" path="res://scenes/AI/path_manager.tscn" id="5_7qhu6"]
 [ext_resource type="Script" uid="uid://depwfapdbbivd" path="res://scenes/placeables/floor.gd" id="6_o5uas"]
+[ext_resource type="PackedScene" uid="uid://bq2hx8vvhjhlc" path="res://scenes/placeables/placeable_door.tscn" id="7_j54y3"]
 
 [node name="Node2D" type="Node2D" unique_id=652856969]
 
@@ -17,6 +18,9 @@ scale = Vector2(0.6, 0.6)
 destination_floor = 1
 destination_door = NodePath("../../room2/Door")
 
+[node name="DestinationPoint" parent="room1/Door" index="1" unique_id=1317049880]
+position = Vector2(5.000046, -513.6667)
+
 [node name="room2" parent="." unique_id=2016408401 instance=ExtResource("1_aj5xa")]
 position = Vector2(598, 0)
 scale = Vector2(0.6, 0.6)
@@ -26,7 +30,7 @@ current_floor = 1
 destination_door = NodePath("../../room1/Door")
 
 [node name="Enemy" parent="." unique_id=1191606021 node_paths=PackedStringArray("current_room") instance=ExtResource("2_8nafw")]
-position = Vector2(695, 449)
+position = Vector2(760, 461)
 current_room = NodePath("../room1")
 
 [node name="StateMachine" parent="Enemy" index="0" unique_id=80218272]
@@ -34,29 +38,51 @@ script = ExtResource("3_8nafw")
 initial_state = NodePath("EnemyWalk")
 
 [node name="EnemyWalk" parent="Enemy/StateMachine" index="1" unique_id=883938252 node_paths=PackedStringArray("interest_points")]
-interest_points = [NodePath("../../../InterestPoint"), NodePath("../../../InterestPoint2")]
+interest_points = [NodePath("../../../InterestPoint"), NodePath("../../../InterestPoint2"), NodePath("../../../InterestPoint3")]
 
 [node name="InterestPoint" parent="." unique_id=795402493 groups=["FirstEnemy"] instance=ExtResource("4_wft5d")]
 position = Vector2(1019, 469)
 
 [node name="InterestPoint2" parent="." unique_id=1988871341 groups=["FirstEnemy"] instance=ExtResource("4_wft5d")]
-position = Vector2(702, 200)
+position = Vector2(178, 451)
+current_floor = 0
+
+[node name="InterestPoint3" parent="." unique_id=829382694 groups=["FirstEnemy"] instance=ExtResource("4_wft5d")]
+position = Vector2(695, 163)
 current_floor = 1
 
 [node name="Path_manager" parent="." unique_id=460181009 groups=["path_manager"] instance=ExtResource("5_7qhu6")]
 
 [node name="Floor" type="Node2D" parent="." unique_id=1401218396 groups=["floor"]]
-position = Vector2(1070, 473)
+position = Vector2(1068, 456)
 script = ExtResource("6_o5uas")
 metadata/_custom_type_script = "uid://depwfapdbbivd"
 
 [node name="Floor2" type="Node2D" parent="." unique_id=233220483 groups=["floor"]]
-position = Vector2(1073, 218)
+position = Vector2(1071, 188)
 script = ExtResource("6_o5uas")
 metadata/_custom_type_script = "uid://depwfapdbbivd"
+
+[node name="Door" parent="." unique_id=1779604482 node_paths=PackedStringArray("destination_door") groups=["doors", "rightDoor"] instance=ExtResource("7_j54y3")]
+position = Vector2(648, 507)
+scale = Vector2(0.5, 0.5)
+destination_door = NodePath("../Door2")
+
+[node name="DestinationPoint" parent="Door" index="1" unique_id=1317049880]
+position = Vector2(-246, -88)
+
+[node name="Door2" parent="." unique_id=1674755904 node_paths=PackedStringArray("destination_door") groups=["doors", "leftDoor"] instance=ExtResource("7_j54y3")]
+position = Vector2(525, 509)
+scale = Vector2(0.5, 0.5)
+destination_door = NodePath("../Door")
+
+[node name="DestinationPoint" parent="Door2" index="1" unique_id=1317049880]
+position = Vector2(246, -88)
 
 [editable path="room1"]
 [editable path="room1/Door"]
 [editable path="room2"]
 [editable path="room2/Door"]
 [editable path="Enemy"]
+[editable path="Door"]
+[editable path="Door2"]

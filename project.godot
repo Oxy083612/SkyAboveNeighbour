@@ -25,6 +25,8 @@ path_manager=""
 doors=""
 FirstEnemy=""
 floor=""
+rightDoor=""
+leftDoor=""
 
 [physics]
 
