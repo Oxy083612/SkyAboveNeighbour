@@ -24,7 +24,7 @@ func Enter():
 
 
 func Physics_Update(delta):
-
+	#print(current_interest)
 	enemy.move_to_target()
 	#print(enemy.current_room)
 	#if enemy.reached_target():
@@ -44,17 +44,20 @@ func select_interest_point():
 
 	enemy.go_to(point.global_position, point.current_floor)
 
-	current_interest += 1
+
+	#current_interest += 1
 
 
 func on_interest_point(point):
 
-	if point == interest_points[current_interest - 1]:
-
+	if point == interest_points[current_interest]:
+		
 		enemy.stop()
 		
 		print("tu punkt")
+		
 		Transitioned.emit(self, "EnemyIdle")
+		current_interest += 1
 
 
 func Exit():

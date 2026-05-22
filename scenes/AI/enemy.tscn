@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dvb0cb0rbo5mf"]
 
 [ext_resource type="Script" uid="uid://dorsi8jor5041" path="res://scenes/AI/enemy.gd" id="1_qi2p4"]
+[ext_resource type="Script" uid="uid://bs4w6mt14sjsu" path="res://scenes/AI/state_machine.gd" id="2_bs03k"]
 [ext_resource type="Texture2D" uid="uid://njxx0w2sguqg" path="res://assets/placeholders/bor3.png" id="2_iifgy"]
 [ext_resource type="Script" uid="uid://d1uxr3umtv2io" path="res://scenes/AI/States/EnemyWalk.gd" id="3_4a744"]
 [ext_resource type="Script" uid="uid://bsteogovtkwrw" path="res://scenes/AI/States/EnemyIdle.gd" id="3_fa8gx"]
+[ext_resource type="Script" uid="uid://mcf6aj25e81e" path="res://scenes/AI/States/EnemyDoorEnter.gd" id="4_il1m5"]
+[ext_resource type="Script" uid="uid://clls15oxcoaov" path="res://scenes/AI/States/EnemyDoorExit.gd" id="5_hmc6k"]
 [ext_resource type="Texture2D" uid="uid://dxvgtugidvrck" path="res://assets/enemy/spritesheet.png" id="5_il1m5"]
-[ext_resource type="PackedScene" uid="uid://ccl3800q0dypd" path="res://scenes/UI/soundplayer.tscn" id="6_hmc6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 size = Vector2(36, 90)
@@ -616,65 +618,65 @@ region = Rect2(1521, 402, 117, 201)
 atlas = SubResource("CompressedTexture2D_lhnq0")
 region = Rect2(1638, 402, 117, 201)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_il1m5"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(0, 0, 117, 201)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqrsu"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(117, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(0, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1guxw"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(234, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(132, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u6lge"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(351, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(264, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_74ygy"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(468, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(396, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2aym7"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(585, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(528, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ilubx"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(702, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(660, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vdvs6"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(819, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(792, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8ik4"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(936, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(924, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q7vu1"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(1053, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(1056, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ntdrw"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(1170, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(1188, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7v3rm"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(1287, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(1320, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ll06p"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(1404, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(1452, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibaro"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(1521, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(1584, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oto06"]
-atlas = SubResource("CompressedTexture2D_lhnq0")
-region = Rect2(1638, 0, 117, 201)
+atlas = ExtResource("5_il1m5")
+region = Rect2(1716, 402, 132, 201)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh5b7"]
+atlas = ExtResource("5_il1m5")
+region = Rect2(1848, 402, 132, 201)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lhnq0"]
 atlas = ExtResource("5_il1m5")
@@ -1745,9 +1747,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_il1m5")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_tqrsu")
 }, {
 "duration": 1.0,
@@ -1788,6 +1787,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oto06")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vh5b7")
 }],
 "loop": true,
 "name": &"move",
@@ -2262,14 +2264,21 @@ animations = [{
 [node name="Enemy" type="CharacterBody2D" unique_id=1191606021]
 script = ExtResource("1_qi2p4")
 
-[node name="StateMachine" type="Node" parent="." unique_id=80218272]
-script = ExtResource("3_fa8gx")
+[node name="State Machine" type="Node" parent="." unique_id=80218272]
+script = ExtResource("2_bs03k")
+initial_state = NodePath("EnemyWalk")
 
-[node name="EnemyIdle" type="Node" parent="StateMachine" unique_id=1322073035]
-script = ExtResource("3_fa8gx")
-
-[node name="EnemyWalk" type="Node" parent="StateMachine" unique_id=883938252]
+[node name="EnemyWalk" type="Node" parent="State Machine" unique_id=883938252]
 script = ExtResource("3_4a744")
+
+[node name="EnemyIdle" type="Node" parent="State Machine" unique_id=1322073035]
+script = ExtResource("3_fa8gx")
+
+[node name="EnemyDoorEnter" type="Node" parent="State Machine" unique_id=1547126073]
+script = ExtResource("4_il1m5")
+
+[node name="EnemyDoorExit" type="Node" parent="State Machine" unique_id=1772571152]
+script = ExtResource("5_hmc6k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2063145728]
 position = Vector2(4.7683716e-07, -9.536743e-07)
@@ -2281,9 +2290,6 @@ position = Vector2(-8, 0)
 shape = SubResource("RectangleShape2D_qi2p4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1237749072]
-position = Vector2(-1, -77)
+position = Vector2(-2, -10)
 sprite_frames = SubResource("SpriteFrames_fa8gx")
-animation = &"rage"
-frame_progress = 0.8048721
-
-[node name="Soundplayer" parent="." unique_id=453570938 instance=ExtResource("6_hmc6k")]
+animation = &"move"
