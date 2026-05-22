@@ -33,9 +33,11 @@ var current_room: Room = null
 var target_destination: Marker2D = null
 var current_prank: Prank = null
 var target_floor: int = 0
+var dir = 0
 @export var floor_level:= 0
 @export var floor_manager: FloorManager
 @onready var enemy: Enemy = $"../Enemy"
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
 
 func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
@@ -95,9 +97,16 @@ func set_state(state) -> void:
 func enter_state(state) -> void:
 	match state:
 		State.IDLE:
+			animation.flip_h = false
+			animation.play("idle")
 			pass
 		State.WALK:
-			print("target_x: ", target_x)
+			if sign(target_x - position.x) > 0:
+				animation.flip_h = true
+				animation.play("move")
+			else:
+				animation.flip_h = false
+				animation.play("move")		
 			pass
 		State.HIDDEN:
 			is_hidden = true
@@ -127,8 +136,8 @@ func exit_state() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if CurrentState == State.WALK:
-		var dir = sign(target_x - global_position.x)
-		global_position.x += dir * speed * delta
+		dir = sign(target_x - position.x)
+		position.x += dir * speed * delta
 
 		if abs(global_position.x - target_x) < 5:
 			state_handler()
