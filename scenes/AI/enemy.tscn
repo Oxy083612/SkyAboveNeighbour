@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://d1uxr3umtv2io" path="res://scenes/AI/States/EnemyWalk.gd" id="3_4a744"]
 [ext_resource type="Script" uid="uid://bsteogovtkwrw" path="res://scenes/AI/States/EnemyIdle.gd" id="3_fa8gx"]
 [ext_resource type="Texture2D" uid="uid://dxvgtugidvrck" path="res://assets/enemy/spritesheet.png" id="5_il1m5"]
+[ext_resource type="PackedScene" uid="uid://ccl3800q0dypd" path="res://scenes/UI/soundplayer.tscn" id="6_hmc6k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qi2p4"]
 size = Vector2(36, 90)
@@ -2284,3 +2285,5 @@ position = Vector2(-1, -77)
 sprite_frames = SubResource("SpriteFrames_fa8gx")
 animation = &"rage"
 frame_progress = 0.8048721
+
+[node name="Soundplayer" parent="." unique_id=453570938 instance=ExtResource("6_hmc6k")]

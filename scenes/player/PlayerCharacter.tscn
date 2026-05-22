@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b05sxwgncuqqu" path="res://scenes/UI/HUD.tscn" id="3_ur54r"]
 [ext_resource type="PackedScene" uid="uid://cyfcixu53v5b5" path="res://scenes/UI/inventory.tscn" id="4_6nsgb"]
 [ext_resource type="Script" uid="uid://ci5dve3qp4v20" path="res://scenes/UI/hud.gd" id="5_ljh2g"]
+[ext_resource type="PackedScene" uid="uid://ccl3800q0dypd" path="res://scenes/UI/soundplayer.tscn" id="6_g7j5r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_chqax"]
 atlas = ExtResource("1_8ocfk")
@@ -162,6 +163,8 @@ script = ExtResource("5_ljh2g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1404834666]
 shape = SubResource("CircleShape2D_8ocfk")
+
+[node name="Soundplayer" parent="." unique_id=453570938 instance=ExtResource("6_g7j5r")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 

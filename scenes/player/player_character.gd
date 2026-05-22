@@ -2,6 +2,7 @@ class_name PlayerCharacter
 extends Node2D
 
 @onready var inventory: Inventory = %Control
+@onready var soundplayer: AudioStreamPlayer2D = $Soundplayer
 
 enum State {
 	IDLE,
@@ -149,6 +150,7 @@ func state_handler() -> void:
 			_pending_action = Action.NONE
 			if not item_container.is_empty:	
 				for item in item_container.items:
+					soundplayer.playsound("pickup")
 					inventory.addItem(item)
 				item_container.is_empty = true
 			item_container = null
@@ -161,11 +163,13 @@ func state_handler() -> void:
 				for item in current_prank.prankRequiredItems:
 					if not inventory.checkItem(item.itemName):
 						has_all_items = false
+						soundplayer.playsound("idk")
 						print("Cant do prank. Missing item: " + item.itemName)
 						break
 				if has_all_items:
 					print("Prank done: " + current_prank.prankName)
 					current_prank.prankReady==true
+					soundplayer.playsound("prankdo")
 					for item in current_prank.prankRequiredItems:
 						inventory.removeItem(item)
 			else:

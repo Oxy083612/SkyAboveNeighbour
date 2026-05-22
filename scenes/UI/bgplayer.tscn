@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bicl1onjlxd24"]
+
+[ext_resource type="Script" uid="uid://bkitsl70f0fi0" path="res://scenes/UI/bgscript.gd" id="1_blvll"]
+
+[node name="Bgplayer" type="AudioStreamPlayer2D" unique_id=518193303]
+script = ExtResource("1_blvll")
