@@ -109,11 +109,22 @@ func change_floor(i, j, k : Door):
 
 	if k == door:
 		
+		state_machine.on_child_transition(state_machine.current_state, "EnemyDoorEnter")
 		position.y = floors[i].position.y
 		current_floor = i
 		current_room = k.destination_door.get_parent()
 		door_target_position = -1
 		doorfound = false
+		state_machine.on_child_transition(state_machine.current_state, "EnemyDoorExit")
+		
+	else:
+		if i == current_floor:
+			state_machine.on_child_transition(state_machine.current_state, "EnemyDoorEnter")
+			current_room = k.destination_door.get_parent()
+			door_target_position = -1
+			doorfound = false
+			state_machine.on_child_transition(state_machine.current_state, "EnemyDoorExit")
+	
 
 
 func on_interest_point(point):

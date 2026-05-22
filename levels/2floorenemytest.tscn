@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://cher18deqtnp7" path="res://scenes/placeables/rooms/room1.tscn" id="1_aj5xa"]
 [ext_resource type="PackedScene" uid="uid://dvb0cb0rbo5mf" path="res://scenes/AI/enemy.tscn" id="2_8nafw"]
-[ext_resource type="Script" uid="uid://bs4w6mt14sjsu" path="res://scenes/AI/state_machine.gd" id="3_8nafw"]
 [ext_resource type="PackedScene" uid="uid://cjw3wcw67olba" path="res://scenes/AI/interest_point.tscn" id="4_wft5d"]
 [ext_resource type="PackedScene" uid="uid://cbo5of5bdy4dd" path="res://scenes/AI/path_manager.tscn" id="5_7qhu6"]
 [ext_resource type="Script" uid="uid://depwfapdbbivd" path="res://scenes/placeables/floor.gd" id="6_o5uas"]
@@ -13,15 +12,15 @@
 position = Vector2(596, 268)
 scale = Vector2(0.6, 0.6)
 
-[node name="Door" parent="room1" index="3" unique_id=1293053166 node_paths=PackedStringArray("destination_door") groups=["doors"]]
+[node name="Door" parent="room1" index="2" unique_id=1293053166 node_paths=PackedStringArray("destination_door") groups=["doors"]]
 destination_floor = 1
 destination_door = NodePath("../../room2/Door")
 
 [node name="room2" parent="." unique_id=2016408401 instance=ExtResource("1_aj5xa")]
-position = Vector2(598, 0)
+position = Vector2(594, -4)
 scale = Vector2(0.6, 0.6)
 
-[node name="Door" parent="room2" index="3" unique_id=1293053166 node_paths=PackedStringArray("destination_door") groups=["doors"]]
+[node name="Door" parent="room2" index="2" unique_id=1293053166 node_paths=PackedStringArray("destination_door") groups=["doors"]]
 current_floor = 1
 destination_door = NodePath("../../room1/Door")
 
@@ -29,18 +28,14 @@ destination_door = NodePath("../../room1/Door")
 position = Vector2(695, 449)
 current_room = NodePath("../room1")
 
-[node name="State Machine" parent="Enemy" index="0" unique_id=80218272]
-script = ExtResource("3_8nafw")
-initial_state = NodePath("EnemyWalk")
-
-[node name="EnemyWalk" parent="Enemy/State Machine" index="1" unique_id=883938252 node_paths=PackedStringArray("interest_points")]
+[node name="EnemyWalk" parent="Enemy/State Machine" parent_id_path=PackedInt32Array(1191606021, 80218272) index="1" unique_id=883938252 node_paths=PackedStringArray("interest_points")]
 interest_points = [NodePath("../../../InterestPoint"), NodePath("../../../InterestPoint2")]
 
 [node name="InterestPoint" parent="." unique_id=795402493 groups=["FirstEnemy"] instance=ExtResource("4_wft5d")]
 position = Vector2(1019, 469)
 
 [node name="InterestPoint2" parent="." unique_id=1988871341 groups=["FirstEnemy"] instance=ExtResource("4_wft5d")]
-position = Vector2(702, 200)
+position = Vector2(689, 192)
 current_floor = 1
 
 [node name="Path_manager" parent="." unique_id=460181009 groups=["path_manager"] instance=ExtResource("5_7qhu6")]
@@ -56,5 +51,7 @@ script = ExtResource("6_o5uas")
 metadata/_custom_type_script = "uid://depwfapdbbivd"
 
 [editable path="room1"]
+[editable path="room1/Door"]
 [editable path="room2"]
+[editable path="room2/Door"]
 [editable path="Enemy"]
