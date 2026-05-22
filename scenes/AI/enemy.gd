@@ -24,6 +24,7 @@ var floors : Array[Floor]
 
 @onready var state_machine = $StateMachine
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var player_character: PlayerCharacter = $"../PlayerCharacter"
 
 func _ready():
 
@@ -114,7 +115,15 @@ func change_floor(i, j, k : Door):
 		current_room = k.destination_door.get_parent()
 		door_target_position = -1
 		doorfound = false
+		detect_player_check()
+		
+func detect_player_check():
+	if current_room == player_character.get_current_room():
+		on_detect_player()
 
+func on_detect_player():
+	print("a")
+	queue_free()
 
 func on_interest_point(point):
 

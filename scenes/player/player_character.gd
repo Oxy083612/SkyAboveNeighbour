@@ -35,6 +35,7 @@ var current_prank: Prank = null
 var target_floor: int = 0
 @export var floor_level:= 0
 @export var floor_manager: FloorManager
+@onready var enemy: Enemy = $"../Enemy"
 
 func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
@@ -179,9 +180,11 @@ func state_handler() -> void:
 		Action.NONE:
 			set_state(State.IDLE)
 			
-
+func get_current_room():
+	return current_room
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Room:
 		current_room = area.get_parent()
+	enemy.detect_player_check()
 		
