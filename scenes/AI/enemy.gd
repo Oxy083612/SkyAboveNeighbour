@@ -20,6 +20,8 @@ var doors : Array[Door] = []
 var door : Door
 var door_target_position = -1
 
+var direction
+
 var floors : Array[Floor]
 
 @onready var state_machine = $StateMachine
@@ -27,20 +29,17 @@ var floors : Array[Floor]
 @onready var player_character: PlayerCharacter = $"../PlayerCharacter"
 
 func _ready():
-
 	path_manager = get_tree().get_first_node_in_group("path_manager")
 	
 	for node in get_tree().get_nodes_in_group("floor"):
 			var floor = node as Floor
 			if floor:
-				print(floor)
+				#print(floor)
 				floors.append(floor)
 
 func move_to_target():
-
+	
 	update_path()
-
-	var direction
 
 	if door_target_position != -1:
 		direction = sign(door_target_position - global_position.x)
@@ -65,7 +64,7 @@ func reached_target() -> bool:
 
 
 func go_to(target_position : Vector2, floor : int):
-	print(current_floor, target_floor)
+	#print(current_floor, target_floor)
 	current_target_position = target_position
 	target_floor = floor
 
@@ -83,7 +82,7 @@ func update_path():
 		elif target_floor < current_floor:
 			floortogo = current_floor - 1
 		
-		print(current_floor, floortogo)
+		#print(current_floor, floortogo)
 		find_door()
 
 		doorfound = true
@@ -132,17 +131,18 @@ func on_interest_point(point):
 		state_machine.current_state.on_interest_point(point)
 		
 func _play_animation(animation_name) -> void:
-	print(animated_sprite)
 	match animation_name:
 		"idle":
 			animated_sprite.flip_h = false
 			animated_sprite.play("idle")
 			pass
 		"move":
-			if velocity.x > 0:
+			if direction > 0:
+				print(direction)
 				animated_sprite.flip_h = false
 				animated_sprite.play("move")
 			else:
+				print(direction)
 				animated_sprite.flip_h = true
 				animated_sprite.play("move")
 			pass
