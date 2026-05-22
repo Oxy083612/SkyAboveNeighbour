@@ -18,6 +18,8 @@ func Enter():
 
 	print("ENTER WALK")
 
+	enemy._play_animation("move")
+
 	select_interest_point()
 
 

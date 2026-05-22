@@ -22,13 +22,13 @@ var door_target_position = -1
 
 var floors : Array[Floor]
 
-var state_machine : StateMachine
+@onready var state_machine = $StateMachine
+@onready var animated_sprite = $AnimatedSprite2D
 
 func _ready():
 
 	path_manager = get_tree().get_first_node_in_group("path_manager")
-	state_machine = $"State Machine"
-
+	
 	for node in get_tree().get_nodes_in_group("floor"):
 			var floor = node as Floor
 			if floor:
@@ -121,3 +121,19 @@ func on_interest_point(point):
 	if state_machine.current_state is EnemyWalk:
 
 		state_machine.current_state.on_interest_point(point)
+		
+func _play_animation(animation_name) -> void:
+	print(animated_sprite)
+	match animation_name:
+		"idle":
+			animated_sprite.flip_h = false
+			animated_sprite.play("idle")
+			pass
+		"move":
+			if velocity.x > 0:
+				animated_sprite.flip_h = false
+				animated_sprite.play("move")
+			else:
+				animated_sprite.flip_h = true
+				animated_sprite.play("move")
+			pass
