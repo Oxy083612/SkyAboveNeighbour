@@ -29,13 +29,17 @@ var is_hidden := false
 var _interaction_y := 0
 var _pending_action := Action.NONE
 var item_container
+var can_move = true
 var current_room: Room = null
 var target_destination: Marker2D = null
 var current_prank: Prank = null
 var target_floor: int = 0
+var dir = 0
 @export var floor_level:= 0
 @export var floor_manager: FloorManager
 @onready var enemy: Enemy = $"../Enemy"
+@onready var animation: AnimatedSprite2D = $AnimatedSprite2D
+@onready var timer: Timer = $Delay
 
 func _init() -> void:
 	SignalBus.movement_action.connect(_on_move)
@@ -95,9 +99,16 @@ func set_state(state) -> void:
 func enter_state(state) -> void:
 	match state:
 		State.IDLE:
+			animation.flip_h = false
+			animation.play("idle")
 			pass
 		State.WALK:
-			print("target_x: ", target_x)
+			if sign(target_x - position.x) > 0:
+				animation.flip_h = true
+				animation.play("move")
+			else:
+				animation.flip_h = false
+				animation.play("move")		
 			pass
 		State.HIDDEN:
 			is_hidden = true
@@ -126,9 +137,9 @@ func exit_state() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if CurrentState == State.WALK:
-		var dir = sign(target_x - global_position.x)
-		global_position.x += dir * speed * delta
+	if CurrentState == State.WALK and can_move == true:
+		dir = sign(target_x - position.x)
+		position.x += dir * speed * delta
 
 		if abs(global_position.x - target_x) < 5:
 			state_handler()
@@ -155,23 +166,25 @@ func state_handler() -> void:
 			set_state(State.IDLE)
 			
 		Action.PRANK:
-			_pending_action = Action.NONE
+			
 			if !current_prank.prankDone:
 				var has_all_items = true 
 				for item in current_prank.prankRequiredItems:
 					if not inventory.checkItem(item.itemName):
 						has_all_items = false
 						print("Cant do prank. Missing item: " + item.itemName)
+						set_state(State.IDLE)
 						break
+					
 				if has_all_items:
-					print("Prank done: " + current_prank.prankName)
-					current_prank.prankReady==true
-					for item in current_prank.prankRequiredItems:
-						inventory.removeItem(item)
+					can_move = false
+					animation.play("interaction_do")
+					timer.start()
 			else:
 				pass
-			current_prank = null
-			set_state(State.IDLE)
+
+			
+
 			
 		Action.DOOR:
 			floor_level = target_floor
@@ -191,4 +204,18 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Room:
 		current_room = area.get_parent()
 	enemy.detect_player_check()
+		
+
+
+func _on_delay_timeout() -> void:
+	match _pending_action:
+		Action.PRANK:
+			print("Prank done: " + current_prank.prankName)
+			current_prank.prankReady == true
+			for item in current_prank.prankRequiredItems:
+				inventory.removeItem(item)
+			_pending_action = Action.NONE
+			current_prank = null
+			can_move = true
+			set_state(State.IDLE)
 		
