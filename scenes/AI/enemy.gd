@@ -26,7 +26,9 @@ var direction
 
 var floors : Array[Floor]
 
-@onready var state_machine = $StateMachine
+
+@onready var state_machine: StateMachine = $"State Machine"
+@onready var enemy_door_exit: EnemyDoorExit = $"State Machine/EnemyDoorExit"
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var player_character: PlayerCharacter = $"../PlayerCharacter"
 

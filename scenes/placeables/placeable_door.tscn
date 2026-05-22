@@ -1,12 +1,7 @@
 [gd_scene format=3 uid="uid://bq2hx8vvhjhlc"]
 
-[ext_resource type="Texture2D" uid="uid://cufvegyc4rsmb" path="res://assets/placeholders/door2.png" id="1_ba8gm"]
 [ext_resource type="Script" uid="uid://bryhkcsf4rmd7" path="res://scenes/placeables/door.gd" id="1_v6xrn"]
 [ext_resource type="Texture2D" uid="uid://dxvgtugidvrck" path="res://assets/enemy/spritesheet.png" id="2_e4oha"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmiq7"]
-atlas = ExtResource("1_ba8gm")
-region = Rect2(388, 223, 358, 558)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6xrn"]
 size = Vector2(214, 334)
@@ -1530,12 +1525,6 @@ animations = [{
 
 [node name="Door" type="Area2D" unique_id=1293053166]
 script = ExtResource("1_v6xrn")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374099344]
-position = Vector2(-106, -335)
-scale = Vector2(0.6, 0.6)
-texture = SubResource("AtlasTexture_pmiq7")
-centered = false
 
 [node name="DestinationPoint" type="Marker2D" parent="." unique_id=1317049880]
 position = Vector2(0, -169)
