@@ -27,7 +27,7 @@ func _ready():
 
 func _process(delta):
 	#print(get_parent().)
-
+	#print(current_state)
 	if current_state:
 		current_state.Update(delta)
 
