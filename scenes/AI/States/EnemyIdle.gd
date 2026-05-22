@@ -17,6 +17,8 @@ func _ready():
 func Enter():
 
 	print("ENTER IDLE")
+	
+	enemy._play_animation("idle")
 
 	timer = idle_time
 
