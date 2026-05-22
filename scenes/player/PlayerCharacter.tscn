@@ -140,8 +140,6 @@ animations = [{
 
 [node name="PlayerCharacter" type="Node2D" unique_id=2119374531]
 script = ExtResource("1_chqax")
-speed = null
-floor_level = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1653471368]
 position = Vector2(0, -16)

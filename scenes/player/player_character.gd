@@ -156,16 +156,20 @@ func state_handler() -> void:
 			
 		Action.PRANK:
 			_pending_action = Action.NONE
-			var has_all_items = true 
-			for item in current_prank.prankRequiredItems:
-				if not inventory.checkItem(item.itemName):
-					has_all_items = false
-					print("Cant do prank. Missing item: " + item.itemName)
-					break
-			if has_all_items:
-				print("Prank done: " + current_prank.prankName)
+			if !current_prank.prankDone:
+				var has_all_items = true 
 				for item in current_prank.prankRequiredItems:
-					inventory.removeItem(item)
+					if not inventory.checkItem(item.itemName):
+						has_all_items = false
+						print("Cant do prank. Missing item: " + item.itemName)
+						break
+				if has_all_items:
+					print("Prank done: " + current_prank.prankName)
+					current_prank.prankReady==true
+					for item in current_prank.prankRequiredItems:
+						inventory.removeItem(item)
+			else:
+				pass
 			current_prank = null
 			set_state(State.IDLE)
 			
